@@ -1,0 +1,21 @@
+<!-- Componente Astro -->
+<div id="miComponente">¡Mi Componente!</div>
+
+<style>
+  #miComponente {
+  opacity: 0; /* Comienza con opacidad 0 para la transición */
+  animation: aparecer 2s ease-in-out forwards; /* Utiliza la animación 'aparecer' durante 2 segundos */
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(-50px); /* Comienza 50px arriba de su posición final */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* Termina en su posición final */
+  }
+}
+
+</style>

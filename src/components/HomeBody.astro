@@ -1,41 +1,55 @@
 ---
 
 ---
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
+
+<link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap"
+    rel="stylesheet"
+/>
 
 <div class="centered-content">
-    <img
-        class="centered-image"
-        src="/unicon.png" 
-        alt="Imagen centrada"
-    />
+    <img class="centered-image" src="/unicon.png" alt="Imagen centrada" />
     <p class="centered-text">
-        Prepárate para ponencias inspiradoras, sesiones de co-working y oportunidades inigualables de networking.
+        Prepárate para ponencias inspiradoras, sesiones de co-working y
+        oportunidades inigualables de networking.
     </p>
 </div>
 
 <style>
-.centered-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    flex-direction: column; /* Alinear elementos verticalmente */
-}
+    .centered-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column; /* Alinear elementos verticalmente */
+        animation: aparecer 1500ms ease-in-out forwards;
+    }
 
-.centered-image {
-    width: 400px; /* Tamaño de la imagen */
-    height: auto;
-    display: block;
-    margin: 0 auto; /* Centrar la imagen horizontalmente */
-}
+    .centered-image {
+        width: 400px; /* Tamaño de la imagen */
+        height: auto;
+        display: block;
+        margin: 0 auto; /* Centrar la imagen horizontalmente */
+    }
 
-.centered-text {
-    font-size: 1.2em; /* Tamaño del texto */
-    margin-top: 20px; /* Espacio entre la imagen y el texto */
-    text-align: center;
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 600;
-}
+    .centered-text {
+        font-size: 1.2em; /* Tamaño del texto */
+        margin-top: 20px; /* Espacio entre la imagen y el texto */
+        text-align: center;
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 600;
+    }
 
+    @keyframes aparecer {
+        from {
+            opacity: 0;
+            transform: translateY(
+                -150px
+            ); /* Comienza 50px arriba de su posición final */
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0); /* Termina en su posición final */
+        }
+    }
 </style>

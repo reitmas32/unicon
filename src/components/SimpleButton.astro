@@ -39,6 +39,7 @@ const card_class = "link-card " + position;
 		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 		border: 0.1px groove white;
+		animation: aparecer 700ms ease-in-out forwards;
 	}
 	.link-card > a {
 		width: 100%;
@@ -93,5 +94,18 @@ const card_class = "link-card " + position;
 		bottom: 5vh;
 		left: 50%;
 		transform: translateX(-50%);
+	}
+
+	@keyframes aparecer {
+		from {
+			opacity: 0;
+			transform: translateY(
+				-50px
+			); /* Comienza 50px arriba de su posición final */
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0); /* Termina en su posición final */
+		}
 	}
 </style>
