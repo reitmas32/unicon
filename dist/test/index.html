@@ -1,0 +1,2 @@
+<!DOCTYPE html><!-- Store the message prop as a data attribute. --><script type="module">class r extends HTMLElement{constructor(){super();let n=new Date().getTime(),s=new Date("December 25, 2023 00:00:00").getTime()-n,e=Math.floor(s%(1e3*60)/1e3);this.dataset.secconds=String(e);const t=this.querySelector("button");t&&t.addEventListener("click",()=>{alert(e)})}}customElements.define("astro-greet",r);
+</script><astro-greet data-message="Hello world"> <button>Say message </button> <p>0</p> </astro-greet> 

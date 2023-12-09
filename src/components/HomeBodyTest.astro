@@ -1,0 +1,109 @@
+---
+import CountDownItem from "../components/CountDownItem.astro";
+---
+
+<link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap"
+    rel="stylesheet"
+/>
+
+<div class="centered-content">
+    <img class="centered-image" src="/unicon.png" alt="Imagen centrada" />
+    <div class="countdown" id="countdown">
+        <div id="timer">
+            <span id="days"></span>
+            <span id="hours"></span>
+            <span id="minutes"></span>
+            <span id="seconds"></span>
+        </div>
+    </div>
+    <p class="centered-text">
+        Próximamente: Un evento sin precedentes en la Ciudad de México para el
+        intercambio de ideas y experiencias.
+    </p>
+</div>
+
+<style>
+    .centered-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column; /* Alinear elementos verticalmente */
+    }
+
+    .centered-image {
+        width: 400px; /* Tamaño de la imagen */
+        height: auto;
+        display: block;
+        margin: 0 auto; /* Centrar la imagen horizontalmente */
+    }
+
+    .centered-text {
+        font-size: 1.2em; /* Tamaño del texto */
+        margin-top: 20px; /* Espacio entre la imagen y el texto */
+        text-align: center;
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 600;
+    }
+
+    #timer {
+        display: flex;
+        justify-content: center;
+    }
+
+    #timer span {
+        font-size: 1.5em;
+        margin: 0 5px;
+    }
+
+    #countdown-text {
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+</style>
+
+<script>
+    const countdownDate: number = new Date("2024-02-10T00:00:00").getTime();
+
+    // Verifica que document existe antes de usarlo
+    if (document) {
+        const timer = setInterval(() => {
+            const now: number = new Date().getTime();
+            const distance: number = countdownDate - now;
+
+            const days: number = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours: number = Math.floor(
+                (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+            );
+            const minutes: number = Math.floor(
+                (distance % (1000 * 60 * 60)) / (1000 * 60),
+            );
+            const seconds: number = Math.floor((distance % (1000 * 60)) / 1000);
+
+            const daysElement = document.getElementById("days");
+            const hoursElement = document.getElementById("hours");
+            const minutesElement = document.getElementById("minutes");
+            const secondsElement = document.getElementById("seconds");
+            const timerElement = document.getElementById("timer");
+
+            if (
+                daysElement &&
+                hoursElement &&
+                minutesElement &&
+                secondsElement &&
+                timerElement
+            ) {
+                daysElement.innerText = `${days}d `;
+                hoursElement.innerText = `${hours}h `;
+                minutesElement.innerText = `${minutes}m `;
+                secondsElement.innerText = `${seconds}s `;
+
+                if (distance < 0) {
+                    clearInterval(timer);
+                    timerElement.innerText = "¡Ya pasó!";
+                }
+            }
+        }, 1000);
+    }
+</script>

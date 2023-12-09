@@ -1,0 +1,18 @@
+---
+interface Props {
+    num: string; // valor como 12, o 59
+    type: string; // horas | minutos | dias | ...
+
+}
+
+const { num, type } = Astro.props;
+---
+
+<astro:component>
+    <div>
+        <p>
+            {num}
+        </p>
+        <p>{type}</p>
+    </div>
+</astro:component>
