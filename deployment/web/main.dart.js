@@ -81072,41 +81072,39 @@ A.wG.prototype={
 K(a){var s=null
 return A.nu(B.bZ,A.a([A.rF(s,s,B.x,s,s,B.A4,s,s,s,s,s,s,s),this.c],t.p),B.a0,B.bT)}}
 A.rI.prototype={
-K(a){var s,r,q,p,o,n,m,l=null,k=t.w,j=A.bt(a,l,k).w.a,i=A.bt(a,l,k).w.a,h=i.goA(i)>0.5?30:25
-i=A.bt(a,l,k).w.a
-s=i.goA(i)>0.5?75:40
-i=A.aJ4(2024,2,10,0,0,0,0,!1)
-if(!A.w6(i))A.Z(A.r1(i))
-r=A.jQ(l,new A.lx("Return to Home",new A.a01(a),l),l,l,80,l,80,l)
-q=A.axu(u.L,j.b/4)
+K(a){var s,r,q,p,o,n,m=null,l=t.w,k=A.bt(a,m,l).w.a,j=A.bt(a,m,l).w.a,i=k.a,h=j.goA(j)>0.6?i/50:i/20
+j=A.bt(a,m,l).w.a
+s=j.goA(j)>0.5?75:40
+j=A.aJ4(2024,2,10,0,0,0,0,!1)
+if(!A.w6(j))A.Z(A.r1(j))
+r=A.jQ(m,new A.lx("Return to Home",new A.a01(a),m),m,m,80,m,80,m)
+q=A.axu(u.L,k.b/4)
 p=A.G9().$1$fontSize(s)
 o=A.G9().$1$fontSize(s)
 n=A.G9().$1$fontSize(25)
-k=A.bt(a,l,k).w.a
-m=j.a
-k=k.goA(k)>0.5?m/2:m/1.2
-m=t.p
-return A.arh(l,new A.wG(A.nu(B.bZ,A.a([r,A.io(A.iq(A.a([q,new A.BS(new A.hK(i,!1),p,o,n,l),B.Pe,A.dF(A.arj("Pr\xf3ximamente: Un evento sin precedentes en la Ciudad de M\xe9xico para el intercambio de ideas y experiencias.",A.G9().$1$fontSize(h),B.eh),l,k)],m),B.ah,B.cL,B.ck),l,l)],m),B.a0,B.bT),l))}}
+l=A.bt(a,m,l).w.a
+l=l.goA(l)>0.5?i/2:i/1.2
+i=t.p
+return A.arh(m,new A.wG(A.nu(B.bZ,A.a([r,A.io(A.iq(A.a([q,new A.BS(new A.hK(j,!1),p,o,n,m),B.Pe,A.dF(A.arj("Pr\xf3ximamente: Un evento sin precedentes en la Ciudad de M\xe9xico para el intercambio de ideas y experiencias.",A.G9().$1$fontSize(h),B.eh),m,l)],i),B.ah,B.cL,B.ck),m,m)],i),B.a0,B.bT),m))}}
 A.a01.prototype={
 $0(){A.Jz(this.a).qe(0,"/",null)},
 $S:0}
 A.t_.prototype={
 K(a){return B.NS}}
 A.th.prototype={
-K(a){var s,r,q,p,o=null,n=t.w,m=A.bt(a,o,n).w.a,l=A.bt(a,o,n).w.a,k=l.goA(l)>0.5?30:25
-l=t.p
-s=A.a([],l)
-r=m.a
-q=m.b
-if(r>q)B.b.C(s,A.asu(a))
-p=r<q
-if(p)s.push(A.asu(a)[1])
-if(p)s.push(A.asu(a)[0])
-q=A.axu(u.L,q/4)
-n=A.bt(a,o,n).w.a
-n=n.goA(n)>0.5?r/2:r/1.2
-s.push(A.io(A.iq(A.a([q,A.dF(A.arj("Prep\xe1rate para ponencias inspiradoras, sesiones de co-working y oportunidades inigualables de networking.",A.G9().$1$fontSize(k),B.eh),o,n)],l),B.ah,B.cL,B.ck),o,o))
-return A.arh(o,new A.wG(A.nu(B.bZ,s,B.a0,B.bT),o))}}
+K(a){var s,r,q,p=null,o=t.w,n=A.bt(a,p,o).w.a,m=A.bt(a,p,o).w.a,l=n.a,k=m.goA(m)>0.6?l/50:l/20
+m=t.p
+s=A.a([],m)
+r=n.b
+if(l>r)B.b.C(s,A.asu(a))
+q=l<r
+if(q)s.push(A.asu(a)[1])
+if(q)s.push(A.asu(a)[0])
+r=A.axu(u.L,r/4)
+o=A.bt(a,p,o).w.a
+o=o.goA(o)>0.5?l/2:l/1.2
+s.push(A.io(A.iq(A.a([r,A.dF(A.arj("Prep\xe1rate para ponencias inspiradoras, sesiones de co-working y oportunidades inigualables de networking.",A.G9().$1$fontSize(k),B.eh),p,o)],m),B.ah,B.cL,B.ck),p,p))
+return A.arh(p,new A.wG(A.nu(B.bZ,s,B.a0,B.bT),p))}}
 A.ao7.prototype={
 $0(){},
 $S:0}

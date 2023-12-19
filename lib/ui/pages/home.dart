@@ -11,8 +11,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final double fontSize =
-        MediaQuery.of(context).size.aspectRatio > 0.5 ? 30 : 25;
+    final double fontSize = MediaQuery.of(context).size.aspectRatio > 0.6
+        ? size.width / 50
+        : size.width / 20;
 
     return Scaffold(
       body: BackGroundWidget(

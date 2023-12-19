@@ -12,8 +12,9 @@ class CountDownPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final double fontSize =
-        MediaQuery.of(context).size.aspectRatio > 0.5 ? 30 : 25;
+    final double fontSize = MediaQuery.of(context).size.aspectRatio > 0.6
+        ? size.width / 50
+        : size.width / 20;
     final double fontSizeCountDown =
         MediaQuery.of(context).size.aspectRatio > 0.5 ? 75 : 40;
     DateTime remainingTime = DateTime(2024, 2, 10);
