@@ -12,6 +12,10 @@ class CountDownPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final double fontSize =
+        MediaQuery.of(context).size.aspectRatio > 0.5 ? 30 : 25;
+    final double fontSizeCountDown =
+        MediaQuery.of(context).size.aspectRatio > 0.5 ? 75 : 40;
     DateTime remainingTime = DateTime(2024, 2, 10);
     return Scaffold(
       body: BackGroundWidget(
@@ -38,10 +42,10 @@ class CountDownPage extends StatelessWidget {
                   TimerCountdown(
                     endTime: remainingTime,
                     timeTextStyle: GoogleFonts.jetBrainsMono(
-                      fontSize: 75,
+                      fontSize: fontSizeCountDown,
                     ),
                     colonsTextStyle: GoogleFonts.jetBrainsMono(
-                      fontSize: 75,
+                      fontSize: fontSizeCountDown,
                     ),
                     descriptionTextStyle: GoogleFonts.jetBrainsMono(
                       fontSize: 25,
@@ -51,10 +55,12 @@ class CountDownPage extends StatelessWidget {
                     height: 50,
                   ),
                   SizedBox(
-                    width: size.width / 2,
+                    width: MediaQuery.of(context).size.aspectRatio > 0.5
+                        ? size.width / 2
+                        : size.width / 1.2,
                     child: SelectableText(
                       "Próximamente: Un evento sin precedentes en la Ciudad de México para el intercambio de ideas y experiencias.",
-                      style: GoogleFonts.jetBrainsMono(fontSize: 30),
+                      style: GoogleFonts.jetBrainsMono(fontSize: fontSize),
                       textAlign: TextAlign.center,
                     ),
                   ),

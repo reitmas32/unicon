@@ -11,6 +11,8 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final double fontSize =
+        MediaQuery.of(context).size.aspectRatio > 0.5 ? 30 : 25;
 
     return Scaffold(
       body: BackGroundWidget(
@@ -28,10 +30,12 @@ class HomePage extends StatelessWidget {
                     height: size.height / 4,
                   ),
                   SizedBox(
-                    width: size.width / 2,
+                    width: MediaQuery.of(context).size.aspectRatio > 0.5
+                        ? size.width / 2
+                        : size.width / 1.2,
                     child: SelectableText(
                       "Prepárate para ponencias inspiradoras, sesiones de co-working y oportunidades inigualables de networking.",
-                      style: GoogleFonts.jetBrainsMono(fontSize: 30),
+                      style: GoogleFonts.jetBrainsMono(fontSize: fontSize),
                       textAlign: TextAlign.center,
                     ),
                   ),

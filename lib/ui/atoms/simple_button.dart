@@ -24,6 +24,8 @@ class _SimpleButtonState extends State<SimpleButton> {
     const width = 200.0;
     const height = 300.0;
     final size = MediaQuery.of(context).size;
+    final double fontSize =
+        MediaQuery.of(context).size.aspectRatio > 1.4 ? 50 : 30;
     return MouseRegion(
       onEnter: (event) => setState(() {
         isHover = true;
@@ -59,7 +61,7 @@ class _SimpleButtonState extends State<SimpleButton> {
             child: Text(
               widget.lable,
               style: GoogleFonts.jetBrainsMono(
-                fontSize: size.height / 40,
+                fontSize: fontSize,
               ),
             ),
           ),
