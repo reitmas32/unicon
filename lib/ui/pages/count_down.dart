@@ -1,0 +1,69 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:unicon/ui/atoms/simple_button.dart';
+import 'package:unicon/ui/organism/background.dart';
+
+class CountDownPage extends StatelessWidget {
+  const CountDownPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    DateTime remainingTime = DateTime(2024, 2, 10);
+    return Scaffold(
+      body: BackGroundWidget(
+        child: Stack(
+          children: [
+            Positioned(
+              top: 80,
+              left: 80,
+              child: SimpleButton(
+                onPressed: () {
+                  context.go("/");
+                },
+                lable: "Return to Home",
+              ),
+            ),
+            Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.network(
+                    "https://raw.githubusercontent.com/reitmas32/unicon/1129ea9afbb29c0a299c8684a345b47202bc7eaa/assets/unicon.svg",
+                    height: size.height / 4,
+                  ),
+                  TimerCountdown(
+                    endTime: remainingTime,
+                    timeTextStyle: GoogleFonts.jetBrainsMono(
+                      fontSize: 75,
+                    ),
+                    colonsTextStyle: GoogleFonts.jetBrainsMono(
+                      fontSize: 75,
+                    ),
+                    descriptionTextStyle: GoogleFonts.jetBrainsMono(
+                      fontSize: 25,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 50,
+                  ),
+                  SizedBox(
+                    width: size.width / 2,
+                    child: SelectableText(
+                      "Próximamente: Un evento sin precedentes en la Ciudad de México para el intercambio de ideas y experiencias.",
+                      style: GoogleFonts.jetBrainsMono(fontSize: 30),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
