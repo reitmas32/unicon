@@ -81041,19 +81041,19 @@ A.C0.prototype={}
 A.lx.prototype={
 ae(){return new A.Ve(B.k)}}
 A.Ve.prototype={
-K(a){var s,r,q,p,o=this,n=null,m=t.w
-A.bt(a,n,m).toString
-m=A.bt(a,n,m).w.a
-s=m.goA(m)>1.4?50:30
-if(o.d){m=new A.b1(new Float64Array(16))
-m.cv()
-m.ao(0,-20,-30)
-m.dc(0,1.2,1.2)}else{m=new A.b1(new Float64Array(16))
-m.cv()}r=A.aIp(n,n,n,n,n,n,n,n,n,B.i,n,n,n,n,new A.cD(A.apS(1),B.n),B.zR,n,n,n,n)
-q=o.a
-p=q.d
-q=A.eR(q.c,n,n,A.G9().$1$fontSize(s))
-return A.pw(new A.wm(new A.L2(p,n,n,n,r,B.x,n,!1,n,!0,new A.dt(B.ml,q,n),n),n,n,m,B.i8,B.bG,n,n),B.c4,new A.alG(o),new A.alH(o),n)}}
+K(a){var s,r,q,p=this,o=null,n=t.w,m=A.bt(a,o,n).w
+n=A.bt(a,o,n).w.a
+m=m.a.a
+s=n.goA(n)>0.6?m/50:m/20
+if(p.d){n=new A.b1(new Float64Array(16))
+n.cv()
+n.ao(0,-20,-30)
+n.dc(0,1.2,1.2)}else{n=new A.b1(new Float64Array(16))
+n.cv()}m=A.aIp(o,o,o,o,o,o,o,o,o,B.i,o,o,o,o,new A.cD(A.apS(1),B.n),B.zR,o,o,o,o)
+r=p.a
+q=r.d
+r=A.eR(r.c,o,o,A.G9().$1$fontSize(s))
+return A.pw(new A.wm(new A.L2(q,o,o,o,m,B.x,o,!1,o,!0,new A.dt(B.ml,r,o),o),o,o,n,B.i8,B.bG,o,o),B.c4,new A.alG(p),new A.alH(p),o)}}
 A.alG.prototype={
 $1(a){var s=this.a
 return s.ak(new A.alF(s))},

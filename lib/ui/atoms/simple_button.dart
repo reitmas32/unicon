@@ -24,8 +24,9 @@ class _SimpleButtonState extends State<SimpleButton> {
     const width = 200.0;
     const height = 300.0;
     final size = MediaQuery.of(context).size;
-    final double fontSize =
-        MediaQuery.of(context).size.aspectRatio > 1.4 ? 50 : 30;
+    final double fontSize = MediaQuery.of(context).size.aspectRatio > 0.6
+        ? size.width / 50
+        : size.width / 20;
     return MouseRegion(
       onEnter: (event) => setState(() {
         isHover = true;
