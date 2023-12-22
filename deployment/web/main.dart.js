@@ -81080,7 +81080,7 @@ return A.nu(B.c0,A.a([A.rF(s,s,B.x,s,s,B.A4,s,s,s,s,s,s,s),this.c],t.p),B.a0,B.b
 A.rI.prototype={
 K(a){var s,r,q,p,o,n,m=null,l=t.w,k=A.bq(a,m,l).w.a,j=A.bq(a,m,l).w.a,i=k.a,h=j.goB(j)>0.6?i/50:i/20
 j=A.bq(a,m,l).w.a
-s=j.goB(j)>0.5?75:40
+s=j.goB(j)>0.5?75:30
 j=A.aJ5(2024,2,10,0,0,0,0,!1)
 if(!A.w7(j))A.Z(A.r1(j))
 r=A.jR(m,new A.iU("Return to Home",new A.a02(a),m),m,m,80,m,80,m)

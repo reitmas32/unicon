@@ -16,7 +16,7 @@ class CountDownPage extends StatelessWidget {
         ? size.width / 50
         : size.width / 20;
     final double fontSizeCountDown =
-        MediaQuery.of(context).size.aspectRatio > 0.5 ? 75 : 40;
+        MediaQuery.of(context).size.aspectRatio > 0.5 ? 75 : 30;
     DateTime remainingTime = DateTime(2024, 2, 10);
     return Scaffold(
       body: BackGroundWidget(
