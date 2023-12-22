@@ -19,9 +19,7 @@ class HomePage extends StatelessWidget {
       body: BackGroundWidget(
         child: Stack(
           children: [
-            if (size.width > size.height) ...buttonsLayer(context),
-            if (size.width < size.height) buttonsLayer(context)[1],
-            if (size.width < size.height) buttonsLayer(context)[0],
+            ...buttonsLayer(context),
             Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -50,18 +48,12 @@ class HomePage extends StatelessWidget {
   }
 }
 
-List<Widget> buttonsLayer(BuildContext context) => [
-      Positioned(
-        bottom: 80,
-        right: 0,
-        left: 0,
-        child: Center(
-          child: SimpleButton(
-            onPressed: () {},
-            lable: "¿Qué esperamos?",
-          ),
-        ),
-      ),
+List<Widget> buttonsLayer(BuildContext context) {
+  final size = MediaQuery.of(context).size;
+
+  final bool centerButton = size.width < size.height;
+  return [
+    if (!centerButton)
       Positioned(
         top: 80,
         right: 80,
@@ -72,20 +64,58 @@ List<Widget> buttonsLayer(BuildContext context) => [
           lable: "Comprar Tikects",
         ),
       ),
+    if (!centerButton)
       Positioned(
         bottom: 80,
-        left: 80,
-        child: SimpleButton(
-          onPressed: () {},
-          lable: "Llamado a la acción",
+        right: 0,
+        left: 0,
+        child: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              SimpleButton(
+                onPressed: () {},
+                lable: "Llamado a la acción",
+              ),
+              SimpleButton(
+                onPressed: () {},
+                lable: "¿Qué esperamos?",
+              ),
+              SimpleButton(
+                onPressed: () {},
+                lable: "¿Qué queremos?",
+              ),
+            ],
+          ),
         ),
       ),
+    if (centerButton)
+      Positioned(
+        top: 80,
+        right: 0,
+        left: 0,
+        child: Center(
+          child: SimpleButton(
+            onPressed: () {
+              context.go("/coming-soon");
+            },
+            lable: "Comprar Tikects",
+          ),
+        ),
+      ),
+    if (centerButton)
       Positioned(
         bottom: 80,
-        right: 80,
-        child: SimpleButton(
-          onPressed: () {},
-          lable: "¿Qué queremos?",
+        right: 0,
+        left: 0,
+        child: Center(
+          child: SimpleButton(
+            onPressed: () {
+              context.go("/coming-soon");
+            },
+            lable: "¿Qué esperamos?",
+          ),
         ),
       ),
-    ];
+  ];
+}
