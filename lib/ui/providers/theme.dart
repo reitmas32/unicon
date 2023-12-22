@@ -75,12 +75,7 @@ class AppTheme {
       onSurface: Color.fromARGB(255, 255, 255, 255),
     ),
     textSelectionTheme: const TextSelectionThemeData(
-      selectionColor: Color.fromARGB(
-        255,
-        97,
-        169,
-        221,
-      ),
+      selectionColor: Color.fromARGB(104, 73, 72, 72),
       cursorColor: Colors.purple,
     ),
     //Color colorButtonAppBar = Colors.white

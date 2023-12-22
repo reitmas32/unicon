@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:go_router/go_router.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:unicon/ui/atoms/simple_button.dart';
+import 'package:unicon/ui/atoms/simple_button_icon.dart';
 import 'package:unicon/ui/organism/background.dart';
 
 class CountDownPage extends StatelessWidget {
@@ -16,21 +16,19 @@ class CountDownPage extends StatelessWidget {
         ? size.width / 50
         : size.width / 20;
     final double fontSizeCountDown =
-        MediaQuery.of(context).size.aspectRatio > 0.5 ? 75 : 30;
+        MediaQuery.of(context).size.aspectRatio > 0.7 ? 75 : 25;
+
+    final double descriptionfontSizeCountDown =
+        MediaQuery.of(context).size.aspectRatio > 0.7 ? 25 : 12;
     DateTime remainingTime = DateTime(2024, 2, 10);
     return Scaffold(
       body: BackGroundWidget(
         child: Stack(
           children: [
             Positioned(
-              top: 80,
-              left: 80,
-              child: SimpleButton(
-                onPressed: () {
-                  context.go("/");
-                },
-                lable: "Return to Home",
-              ),
+              top: 30,
+              left: 30,
+              child: SimpleIconButton(onPressed: () => context.go('/')),
             ),
             Center(
               child: Column(
@@ -49,7 +47,7 @@ class CountDownPage extends StatelessWidget {
                       fontSize: fontSizeCountDown,
                     ),
                     descriptionTextStyle: GoogleFonts.jetBrainsMono(
-                      fontSize: 25,
+                      fontSize: descriptionfontSizeCountDown,
                     ),
                   ),
                   const SizedBox(
@@ -58,7 +56,7 @@ class CountDownPage extends StatelessWidget {
                   SizedBox(
                     width: MediaQuery.of(context).size.aspectRatio > 0.5
                         ? size.width / 2
-                        : size.width / 1.2,
+                        : size.width / 1,
                     child: SelectableText(
                       "Próximamente: Un evento sin precedentes en la Ciudad de México para el intercambio de ideas y experiencias.",
                       style: GoogleFonts.jetBrainsMono(fontSize: fontSize),
