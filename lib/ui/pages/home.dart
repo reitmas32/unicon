@@ -16,6 +16,9 @@ class HomePage extends ConsumerWidget {
     HomeBody(),
     CountDownContent(),
     SpeakersContent(),
+    SizedBox(
+      height: 300,
+    ),
   ];
 
   @override

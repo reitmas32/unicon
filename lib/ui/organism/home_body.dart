@@ -65,91 +65,70 @@ class _HomeBodyState extends ConsumerState<HomeBody> {
         : size.width;
 
     final bool centerButton = size.width < size.height;
+
+    final buttons = [
+      SimpleButtonModel(
+        lable: "Conseguir Ticket",
+        onPressed: () => goToIndex(1),
+      ),
+      SimpleButtonModel(
+        lable: "Ver agenda",
+        onPressed: () => goToIndex(1),
+      ),
+      SimpleButtonModel(
+        lable: "Speakers",
+        onPressed: () => goToIndex(2),
+      ),
+    ];
+
     return [
-      if (!centerButton)
-        Positioned(
-          top: 80,
-          right: 80 + ((size.width - widthContent) / 2),
-          child: SimpleButton(
-            onPressed: () {
-              final contentScrollController = ref.read(scrollProvider);
-              contentScrollController.scrollTo(
-                index: 1,
-                duration: const Duration(milliseconds: 500),
-              );
-            },
-            lable: "Comprar Tikects",
-          ),
-        ),
-      if (!centerButton)
-        Positioned(
-          bottom: 80,
-          right: 0,
-          left: 0,
+      Positioned(
+        top: 80,
+        left: (size.width - widthContent) / 2,
+        child: SizedBox(
+          width: widthContent,
           child: Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                SimpleButton(
-                  onPressed: () {
-                    final contentScrollController = ref.read(scrollProvider);
-                    contentScrollController.scrollTo(
-                      index: 1,
-                      duration: const Duration(milliseconds: 500),
-                    );
-                  },
-                  lable: "Llamado a la acción",
-                ),
-                /*
-              SimpleButton(
-                onPressed: () {},
-                lable: "¿Qué esperamos?",
-              ),
-              SimpleButton(
-                onPressed: () {},
-                lable: "¿Qué queremos?",
-              ),
-              */
-              ],
-            ),
+            child: size.width > widthContent
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: buttons
+                        .map(
+                          (button) => SimpleButton(
+                            lable: button.lable,
+                            onPressed: button.onPressed,
+                          ),
+                        )
+                        .toList(),
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: buttons
+                        .map(
+                          (button) => SimpleButton(
+                            lable: button.lable,
+                            onPressed: button.onPressed,
+                          ),
+                        )
+                        .toList(),
+                  ),
           ),
         ),
-      if (centerButton)
-        Positioned(
-          top: 80,
-          right: 0,
-          left: 0,
-          child: Center(
-            child: SimpleButton(
-              onPressed: () {
-                final contentScrollController = ref.read(scrollProvider);
-                contentScrollController.scrollTo(
-                  index: 1,
-                  duration: const Duration(milliseconds: 500),
-                );
-              },
-              lable: "Comprar Tikects",
-            ),
-          ),
-        ),
-      if (centerButton)
-        Positioned(
-          bottom: 80,
-          right: 0,
-          left: 0,
-          child: Center(
-            child: SimpleButton(
-              onPressed: () {
-                final contentScrollController = ref.read(scrollProvider);
-                contentScrollController.scrollTo(
-                  index: 1,
-                  duration: const Duration(milliseconds: 500),
-                );
-              },
-              lable: "¿Qué esperamos?",
-            ),
-          ),
-        ),
+      ),
     ];
   }
+
+  void goToIndex(int index) {
+    final contentScrollController = ref.read(scrollProvider);
+    contentScrollController.scrollTo(
+      index: index,
+      duration: const Duration(milliseconds: 500),
+    );
+  }
+}
+
+class SimpleButtonModel {
+  final String lable;
+  final VoidCallback onPressed;
+
+  SimpleButtonModel({required this.lable, required this.onPressed});
 }
