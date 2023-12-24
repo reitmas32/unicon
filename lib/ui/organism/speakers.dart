@@ -98,8 +98,9 @@ class SpeakersContent extends ConsumerWidget {
             height: 50,
           ),
           SizedBox(
-            width:
-                widthContent != size.width ? widthContent + 100 : widthContent,
+            width: widthContent + 300 < size.width
+                ? widthContent + 250
+                : widthContent,
             child: Wrap(
               alignment: WrapAlignment.center,
               children: spakers.map((speaker) {
@@ -130,6 +131,11 @@ class _SpeakerCardState extends State<SpeakerCard> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
+    final widthContent = MediaQuery.of(context).size.aspectRatio > 0.7
+        ? size.height * 0.8
+        : size.width;
     return MouseRegion(
       onEnter: (event) => setState(() {
         isHover = true;
@@ -140,7 +146,7 @@ class _SpeakerCardState extends State<SpeakerCard> {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 300),
         child: Container(
-          width: 250,
+          width: widthContent < size.width ? 250 : 150,
           padding: const EdgeInsets.all(20),
           margin: const EdgeInsets.all(20),
           decoration: BoxDecoration(
@@ -164,24 +170,25 @@ class _SpeakerCardState extends State<SpeakerCard> {
                 curve: Curves.easeInOut, // Curva de la animación
                 transform: isHover
                     ? (Matrix4.identity()
-                      ..translate(-0.05 * 170,
+                      ..translate(
+                          -0.05 * (widthContent < size.width ? 170 : 100),
                           -0.05 * 170) // translate towards right and down
                       ..scale(1.1, 1.1))
                     : Matrix4.identity(),
                 child: ClipOval(
                   child: Image.network(
                     widget.speaker.img,
-                    height: 170,
+                    height: (widthContent < size.width ? 170 : 100),
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 20,
+              SizedBox(
+                height: (widthContent < size.width ? 20 : 0),
               ),
               Text(
                 widget.speaker.name,
                 style: GoogleFonts.jetBrainsMono(
-                  fontSize: 18,
+                  fontSize: (widthContent < size.width ? 18 : 14),
                   fontWeight: FontWeight.bold,
                 ),
                 textAlign: TextAlign.center,
@@ -189,7 +196,7 @@ class _SpeakerCardState extends State<SpeakerCard> {
               Text(
                 widget.speaker.job,
                 style: GoogleFonts.jetBrainsMono(
-                  fontSize: 18,
+                  fontSize: (widthContent < size.width ? 18 : 14),
                   color: const Color(0xFFCDB4C7),
                 ),
                 textAlign: TextAlign.center,

@@ -31,23 +31,6 @@ class CountDownContent extends ConsumerWidget {
       width: widthContent,
       child: Stack(
         children: [
-          Positioned(
-            top: 70,
-            left: 0,
-            right: 0,
-            child: Center(
-              child: SimpleIconButton(
-                onPressed: () {
-                  final contentScrollController = ref.read(scrollProvider);
-                  contentScrollController.scrollTo(
-                    index: 0,
-                    duration: const Duration(milliseconds: 500),
-                  );
-                },
-                icon: const Icon(Icons.arrow_upward),
-              ),
-            ),
-          ),
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
