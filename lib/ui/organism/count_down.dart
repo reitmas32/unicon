@@ -27,7 +27,7 @@ class CountDownContent extends ConsumerWidget {
 
     DateTime remainingTime = DateTime(2024, 2, 10);
     return SizedBox(
-      height: size.height,
+      height: size.height - 300,
       width: widthContent,
       child: Stack(
         children: [
@@ -44,7 +44,7 @@ class CountDownContent extends ConsumerWidget {
                     duration: const Duration(milliseconds: 500),
                   );
                 },
-                icon: Icon(Icons.arrow_upward),
+                icon: const Icon(Icons.arrow_upward),
               ),
             ),
           ),
