@@ -100,13 +100,11 @@ class SpeakersContent extends ConsumerWidget {
           SizedBox(
             width:
                 widthContent != size.width ? widthContent + 100 : widthContent,
-            child: Flexible(
-              child: Wrap(
-                alignment: WrapAlignment.center,
-                children: spakers.map((speaker) {
-                  return SpeakerCard(speaker: speaker);
-                }).toList(),
-              ),
+            child: Wrap(
+              alignment: WrapAlignment.center,
+              children: spakers.map((speaker) {
+                return SpeakerCard(speaker: speaker);
+              }).toList(),
             ),
           )
         ],
