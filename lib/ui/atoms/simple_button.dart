@@ -24,9 +24,12 @@ class _SimpleButtonState extends State<SimpleButton> {
     const width = 200.0;
     const height = 300.0;
     final size = MediaQuery.of(context).size;
-    final double fontSize = MediaQuery.of(context).size.aspectRatio > 0.6
-        ? size.width / 50
-        : size.width / 20;
+    final double fontSize =
+        size.height > 1200 ? size.height / 70 : size.height / 50;
+
+    final double padding =
+        size.height > 1200 ? size.height / 100 : size.height / 80;
+
     return MouseRegion(
       onEnter: (event) => setState(() {
         isHover = true;
@@ -52,13 +55,13 @@ class _SimpleButtonState extends State<SimpleButton> {
             ),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(
-                1.0,
+                10.0,
               ),
             ),
           ),
           onPressed: widget.onPressed,
           child: Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: EdgeInsets.all(padding),
             child: Text(
               widget.lable,
               style: GoogleFonts.jetBrainsMono(

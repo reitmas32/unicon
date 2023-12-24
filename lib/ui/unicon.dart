@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:unicon/ui/pages/count_down.dart';
 import 'package:unicon/ui/pages/error.dart';
 import 'package:unicon/ui/pages/home.dart';
 import 'package:unicon/ui/providers/theme.dart';
@@ -33,11 +32,7 @@ class _UniConAppState extends ConsumerState<UniConApp> {
     routes: [
       GoRoute(
         path: "/",
-        builder: (context, state) => const HomePage(),
-      ),
-      GoRoute(
-        path: "/coming-soon",
-        builder: (context, state) => const CountDownPage(),
+        builder: (context, state) => HomePage(),
       ),
     ],
     errorBuilder: (context, state) => const ErrorPage(),
