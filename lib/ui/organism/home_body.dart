@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:unicon/ui/atoms/simple_button.dart';
 import 'package:unicon/ui/providers/scroll.dart';
@@ -76,7 +75,7 @@ class _HomeBodyState extends ConsumerState<HomeBody> {
               final contentScrollController = ref.read(scrollProvider);
               contentScrollController.scrollTo(
                 index: 1,
-                duration: Duration(milliseconds: 500),
+                duration: const Duration(milliseconds: 500),
               );
             },
             lable: "Comprar Tikects",
@@ -96,7 +95,7 @@ class _HomeBodyState extends ConsumerState<HomeBody> {
                     final contentScrollController = ref.read(scrollProvider);
                     contentScrollController.scrollTo(
                       index: 1,
-                      duration: Duration(milliseconds: 500),
+                      duration: const Duration(milliseconds: 500),
                     );
                   },
                   lable: "Llamado a la acción",
@@ -123,7 +122,11 @@ class _HomeBodyState extends ConsumerState<HomeBody> {
           child: Center(
             child: SimpleButton(
               onPressed: () {
-                context.go("/coming-soon");
+                final contentScrollController = ref.read(scrollProvider);
+                contentScrollController.scrollTo(
+                  index: 1,
+                  duration: const Duration(milliseconds: 500),
+                );
               },
               lable: "Comprar Tikects",
             ),
@@ -137,7 +140,11 @@ class _HomeBodyState extends ConsumerState<HomeBody> {
           child: Center(
             child: SimpleButton(
               onPressed: () {
-                context.go("/coming-soon");
+                final contentScrollController = ref.read(scrollProvider);
+                contentScrollController.scrollTo(
+                  index: 1,
+                  duration: const Duration(milliseconds: 500),
+                );
               },
               lable: "¿Qué esperamos?",
             ),
