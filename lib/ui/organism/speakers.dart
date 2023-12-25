@@ -1,3 +1,4 @@
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -128,7 +129,6 @@ class SpeakerCard extends StatefulWidget {
 
 class _SpeakerCardState extends State<SpeakerCard> {
   bool isHover = false;
-
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -200,6 +200,26 @@ class _SpeakerCardState extends State<SpeakerCard> {
                   color: const Color(0xFFCDB4C7),
                 ),
                 textAlign: TextAlign.center,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      EvaIcons.linkedin,
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      EvaIcons.twitter,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

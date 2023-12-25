@@ -24,8 +24,6 @@ class _SimpleButtonState extends State<SimpleButton> {
     const width = 200.0;
     const height = 70.0;
     final size = MediaQuery.of(context).size;
-    final double fontSize =
-        size.height > 1200 ? size.height / 70 : size.height / 50;
 
     final double padding =
         size.height > 1200 ? size.height / 100 : size.height / 80;
