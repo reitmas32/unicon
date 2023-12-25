@@ -3,8 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:unicon/ui/atoms/simple_button_icon.dart';
-import 'package:unicon/ui/providers/scroll.dart';
 
 class CountDownContent extends ConsumerWidget {
   const CountDownContent({super.key});

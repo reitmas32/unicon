@@ -64,8 +64,6 @@ class _HomeBodyState extends ConsumerState<HomeBody> {
         ? size.height * 0.8
         : size.width;
 
-    final bool centerButton = size.width < size.height;
-
     final buttons = [
       SimpleButtonModel(
         lable: "Conseguir Ticket",
