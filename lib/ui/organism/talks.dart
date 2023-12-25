@@ -2,21 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:unicon/domain/models/talk.dart';
-import 'package:unicon/domain/providers/speakers.dart';
 import 'package:unicon/domain/providers/talks.dart';
-import 'package:unicon/ui/molecules/speaker_card.dart';
 
 class TalksContent extends ConsumerWidget {
   const TalksContent({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final size = MediaQuery.of(context).size;
-
-    final widthContent = MediaQuery.of(context).size.aspectRatio > 0.7
-        ? size.height * 0.5
-        : size.width;
-
     final talks = ref.watch(talksProvider);
 
     return SizedBox(
