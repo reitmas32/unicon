@@ -71,7 +71,7 @@ class _HomeBodyState extends ConsumerState<HomeBody> {
       ),
       SimpleButtonModel(
         lable: "Ver agenda",
-        onPressed: () => goToIndex(1),
+        onPressed: () => goToIndex(3),
       ),
       SimpleButtonModel(
         lable: "Speakers",
