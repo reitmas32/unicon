@@ -43,6 +43,7 @@ class _UniConAppState extends ConsumerState<UniConApp> {
     final isDarkMode = ref.watch(isDarkModeProvider);
 
     return MaterialApp.router(
+      title: "UniCon",
       debugShowCheckedModeBanner: false,
       routerConfig: _router,
       theme: isDarkMode ? AppTheme.uniDarkTheme : AppTheme.uniLightTheme,
