@@ -3,8 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:unicon/ui/atoms/simple_button_icon.dart';
-import 'package:unicon/ui/providers/scroll.dart';
 
 class CountDownContent extends ConsumerWidget {
   const CountDownContent({super.key});
@@ -27,27 +25,10 @@ class CountDownContent extends ConsumerWidget {
 
     DateTime remainingTime = DateTime(2024, 2, 10);
     return SizedBox(
-      height: size.height,
+      height: size.height - 300,
       width: widthContent,
       child: Stack(
         children: [
-          Positioned(
-            top: 70,
-            left: 0,
-            right: 0,
-            child: Center(
-              child: SimpleIconButton(
-                onPressed: () {
-                  final contentScrollController = ref.read(scrollProvider);
-                  contentScrollController.scrollTo(
-                    index: 0,
-                    duration: const Duration(milliseconds: 500),
-                  );
-                },
-                icon: Icon(Icons.arrow_upward),
-              ),
-            ),
-          ),
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
