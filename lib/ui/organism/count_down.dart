@@ -23,7 +23,7 @@ class CountDownContent extends ConsumerWidget {
         ? size.height * 0.8
         : size.width;
 
-    DateTime remainingTime = DateTime(2024, 2, 10);
+    DateTime remainingTime = DateTime(2024, 5, 10);
     return SizedBox(
       height: size.height - 300,
       width: widthContent,

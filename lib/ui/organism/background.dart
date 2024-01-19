@@ -15,8 +15,7 @@ class BackGroundWidget extends StatelessWidget {
         Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: NetworkImage(
-                  'https://raw.githubusercontent.com/reitmas32/unicon/main/assets/background.png'),
+              image: AssetImage('assets/background.gif'),
               fit: BoxFit.cover, // Para cubrir toda la pantalla
             ),
           ),

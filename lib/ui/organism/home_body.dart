@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:unicon/ui/atoms/simple_button.dart';
+import 'package:unicon/ui/atoms/auth_button.dart';
+import 'package:unicon/ui/organism/register_dialog.dart';
+import 'package:unicon/ui/organism/siging_dialog.dart';
 import 'package:unicon/ui/providers/scroll.dart';
 
 class HomeBody extends ConsumerStatefulWidget {
@@ -25,6 +28,14 @@ class _HomeBodyState extends ConsumerState<HomeBody> {
         ? size.height * 0.8
         : size.width;
 
+    final double fontSizeCountDown =
+        MediaQuery.of(context).size.aspectRatio > 0.7 ? 75 : 25;
+
+    final double descriptionfontSizeCountDown =
+        MediaQuery.of(context).size.aspectRatio > 0.7 ? 25 : 12;
+
+    DateTime remainingTime = DateTime(2024, 5, 10);
+
     return SizedBox(
       height: size.height,
       child: Stack(
@@ -43,10 +54,29 @@ class _HomeBodyState extends ConsumerState<HomeBody> {
                   SizedBox(
                     width: widthContent - 50,
                     child: SelectableText(
-                      "Prepárate para ponencias inspiradoras, sesiones de co-working y oportunidades inigualables de networking.",
+                      "Networking with Passion: Collaborate with Tech Enthusiasts and Innovators",
                       style: GoogleFonts.jetBrainsMono(fontSize: fontSize),
                       textAlign: TextAlign.center,
                     ),
+                  ),
+                  const SizedBox(
+                    height: 50,
+                  ),
+                  TimerCountdown(
+                    endTime: remainingTime,
+                    timeTextStyle: GoogleFonts.jetBrainsMono(
+                      fontSize: fontSizeCountDown,
+                    ),
+                    colonsTextStyle: GoogleFonts.jetBrainsMono(
+                      fontSize: fontSizeCountDown,
+                    ),
+                    descriptionTextStyle: GoogleFonts.jetBrainsMono(
+                      fontSize: descriptionfontSizeCountDown,
+                    ),
+                    daysDescription: "DÍAS",
+                    hoursDescription: "HRS",
+                    minutesDescription: "MIN",
+                    secondsDescription: "SEC",
                   ),
                 ],
               ),
@@ -58,58 +88,41 @@ class _HomeBodyState extends ConsumerState<HomeBody> {
   }
 
   List<Widget> buttonsLayer() {
-    final size = MediaQuery.of(context).size;
-
-    final widthContent = MediaQuery.of(context).size.aspectRatio > 0.7
-        ? size.height * 0.8
-        : size.width;
-
     final buttons = [
       SimpleButtonModel(
-        lable: "Conseguir Ticket",
-        onPressed: () => goToIndex(1),
+        lable: "Log In",
+        onPressed: () => sigInDialog(),
       ),
       SimpleButtonModel(
-        lable: "Ver agenda",
-        onPressed: () => goToIndex(3),
-      ),
-      SimpleButtonModel(
-        lable: "Speakers",
-        onPressed: () => goToIndex(2),
+        lable: "Register",
+        onPressed: () => registerDialog(),
       ),
     ];
 
     return [
       Positioned(
         top: 80,
-        left: (size.width - widthContent) / 2,
-        child: SizedBox(
-          width: widthContent,
-          child: Center(
-            child: size.width > widthContent
-                ? Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: buttons
-                        .map(
-                          (button) => SimpleButton(
-                            lable: button.lable,
-                            onPressed: button.onPressed,
-                          ),
-                        )
-                        .toList(),
-                  )
-                : Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: buttons
-                        .map(
-                          (button) => SimpleButton(
-                            lable: button.lable,
-                            onPressed: button.onPressed,
-                          ),
-                        )
-                        .toList(),
-                  ),
-          ),
+        right: 80,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: buttons
+              .map((e) => [
+                    AuthButton(
+                      label: e.lable,
+                      onPress: e.onPressed,
+                    ),
+                    if (e != buttons.last)
+                      Text(
+                        " | ",
+                        style: GoogleFonts.jetBrainsMono(
+                          fontSize: 27,
+                          fontWeight: FontWeight.w100,
+                          color: Colors.white,
+                        ),
+                      ),
+                  ])
+              .expand((element) => element)
+              .toList(),
         ),
       ),
     ];
@@ -122,6 +135,20 @@ class _HomeBodyState extends ConsumerState<HomeBody> {
       duration: const Duration(milliseconds: 500),
     );
   }
+
+  void sigInDialog() => showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return const SigInDialog();
+        },
+      );
+
+  void registerDialog() => showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return const RegisterDialog();
+        },
+      );
 }
 
 class SimpleButtonModel {
