@@ -38,117 +38,49 @@ class _HomeBodyState extends ConsumerState<HomeBody> {
 
     return SizedBox(
       height: size.height,
-      child: Stack(
-        children: [
-          ...buttonsLayer(),
-          Center(
-            child: SizedBox(
-              width: widthContent,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SvgPicture.network(
-                    "https://raw.githubusercontent.com/reitmas32/unicon/1129ea9afbb29c0a299c8684a345b47202bc7eaa/assets/unicon.svg",
-                    height: size.height / 4,
-                  ),
-                  SizedBox(
-                    width: widthContent - 50,
-                    child: SelectableText(
-                      "Networking with Passion: Collaborate with Tech Enthusiasts and Innovators",
-                      style: GoogleFonts.jetBrainsMono(fontSize: fontSize),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 50,
-                  ),
-                  TimerCountdown(
-                    endTime: remainingTime,
-                    timeTextStyle: GoogleFonts.jetBrainsMono(
-                      fontSize: fontSizeCountDown,
-                    ),
-                    colonsTextStyle: GoogleFonts.jetBrainsMono(
-                      fontSize: fontSizeCountDown,
-                    ),
-                    descriptionTextStyle: GoogleFonts.jetBrainsMono(
-                      fontSize: descriptionfontSizeCountDown,
-                    ),
-                    daysDescription: "DÍAS",
-                    hoursDescription: "HRS",
-                    minutesDescription: "MIN",
-                    secondsDescription: "SEC",
-                  ),
-                ],
+      child: Center(
+        child: SizedBox(
+          width: widthContent,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SvgPicture.network(
+                "https://raw.githubusercontent.com/reitmas32/unicon/1129ea9afbb29c0a299c8684a345b47202bc7eaa/assets/unicon.svg",
+                height: size.height / 4,
               ),
-            ),
+              SizedBox(
+                width: widthContent - 50,
+                child: SelectableText(
+                  "Networking with Passion: Collaborate with Tech Enthusiasts and Innovators",
+                  style: GoogleFonts.jetBrainsMono(fontSize: fontSize),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              TimerCountdown(
+                endTime: remainingTime,
+                timeTextStyle: GoogleFonts.jetBrainsMono(
+                  fontSize: fontSizeCountDown,
+                ),
+                colonsTextStyle: GoogleFonts.jetBrainsMono(
+                  fontSize: fontSizeCountDown,
+                ),
+                descriptionTextStyle: GoogleFonts.jetBrainsMono(
+                  fontSize: descriptionfontSizeCountDown,
+                ),
+                daysDescription: "DÍAS",
+                hoursDescription: "HRS",
+                minutesDescription: "MIN",
+                secondsDescription: "SEC",
+              ),
+            ],
           ),
-        ],
-      ),
-    );
-  }
-
-  List<Widget> buttonsLayer() {
-    final buttons = [
-      SimpleButtonModel(
-        lable: "Log In",
-        onPressed: () => sigInDialog(),
-      ),
-      SimpleButtonModel(
-        lable: "Register",
-        onPressed: () => registerDialog(),
-      ),
-    ];
-
-    return [
-      Positioned(
-        top: 80,
-        right: 80,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: buttons
-              .map((e) => [
-                    AuthButton(
-                      label: e.lable,
-                      onPress: e.onPressed,
-                    ),
-                    if (e != buttons.last)
-                      Text(
-                        " | ",
-                        style: GoogleFonts.jetBrainsMono(
-                          fontSize: 27,
-                          fontWeight: FontWeight.w100,
-                          color: Colors.white,
-                        ),
-                      ),
-                  ])
-              .expand((element) => element)
-              .toList(),
         ),
       ),
-    ];
-  }
-
-  void goToIndex(int index) {
-    final contentScrollController = ref.read(scrollProvider);
-    contentScrollController.scrollTo(
-      index: index,
-      duration: const Duration(milliseconds: 500),
     );
   }
-
-  void sigInDialog() => showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return const SigInDialog();
-        },
-      );
-
-  void registerDialog() => showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return const RegisterDialog();
-        },
-      );
 }
 
 class SimpleButtonModel {

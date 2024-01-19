@@ -32,7 +32,10 @@ class _UniConAppState extends ConsumerState<UniConApp> {
     routes: [
       GoRoute(
         path: "/",
-        builder: (context, state) => HomePage(),
+        builder: (context, state) => ScrollConfiguration(
+          behavior: MyCustomScrollBehavior(),
+          child: const HomePage(),
+        ),
       ),
     ],
     errorBuilder: (context, state) => const ErrorPage(),
@@ -50,5 +53,16 @@ class _UniConAppState extends ConsumerState<UniConApp> {
       darkTheme: AppTheme.uniDarkTheme,
       themeMode: ThemeMode.light,
     );
+  }
+}
+
+class MyCustomScrollBehavior extends ScrollBehavior {
+  @override
+  Widget buildScrollbar(
+    BuildContext context,
+    Widget child,
+    ScrollableDetails details,
+  ) {
+    return child;
   }
 }
