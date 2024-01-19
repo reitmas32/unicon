@@ -4,6 +4,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:unicon/ui/atoms/auth_button.dart';
+import 'package:unicon/ui/organism/register_dialog.dart';
+import 'package:unicon/ui/organism/siging_dialog.dart';
 import 'package:unicon/ui/providers/scroll.dart';
 
 class HomeBody extends ConsumerStatefulWidget {
@@ -89,11 +91,11 @@ class _HomeBodyState extends ConsumerState<HomeBody> {
     final buttons = [
       SimpleButtonModel(
         lable: "Log In",
-        onPressed: () => goToIndex(1),
+        onPressed: () => sigInDialog(),
       ),
       SimpleButtonModel(
         lable: "Register",
-        onPressed: () => goToIndex(3),
+        onPressed: () => registerDialog(),
       ),
     ];
 
@@ -133,6 +135,20 @@ class _HomeBodyState extends ConsumerState<HomeBody> {
       duration: const Duration(milliseconds: 500),
     );
   }
+
+  void sigInDialog() => showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return const SigInDialog();
+        },
+      );
+
+  void registerDialog() => showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return const RegisterDialog();
+        },
+      );
 }
 
 class SimpleButtonModel {
