@@ -15,12 +15,12 @@ class HomePage extends ConsumerWidget {
 
   static const elements = [
     HomeBody(),
-    CountDownContent(),
-    SpeakersContent(),
-    TalksContent(),
-    SizedBox(
-      height: 300,
-    ),
+    // CountDownContent(),
+    // SpeakersContent(),
+    // TalksContent(),
+    // SizedBox(
+    //   height: 300,
+    // ),
   ];
 
   @override
