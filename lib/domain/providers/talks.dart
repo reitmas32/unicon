@@ -13,10 +13,15 @@ class TalksContainer extends StateNotifier<List<TalkModel>> {
               description:
                   "CSS no deja de evolucionar rápidamente. Te traigo demos y ejemplos de lo que puedes hacer con CSS ahora",
               speaker: SpeakerModel(
-                img: "https://www.miduconf.com/img/speakers/rauchg.jpg",
-                name: "Gullermo Rauch",
-                job: "CEO @ Vercel",
-              ),
+                  img: "https://www.miduconf.com/img/speakers/rauchg.jpg",
+                  name: "Angelica Guzman",
+                  job: "Fairplay BE JR",
+                  tags: [
+                    "Software Engineer",
+                    "Opensource",
+                  ],
+                  description:
+                      "A passionate software developer and technology enthusiast with 2 years of experience in OpenSource projects. I'm always eager to learn new technologies and firmly believe in the power of teamwork and collaboration to achieve meaningful results in software development. My goal is to continue growing and contributing to the field of software development, with a special emphasis on Flutter."),
             ),
             TalkModel(
               start: "13:10",
@@ -25,10 +30,15 @@ class TalksContainer extends StateNotifier<List<TalkModel>> {
               description:
                   "CSS no deja de evolucionar rápidamente. Te traigo demos y ejemplos de lo que puedes hacer con CSS ahora",
               speaker: SpeakerModel(
-                img: "https://www.miduconf.com/img/speakers/rauchg.jpg",
-                name: "Gullermo Rauch",
-                job: "CEO @ Vercel",
-              ),
+                  img: "https://www.miduconf.com/img/speakers/rauchg.jpg",
+                  name: "Angelica Guzman",
+                  job: "Fairplay BE JR",
+                  tags: [
+                    "Software Engineer",
+                    "Opensource",
+                  ],
+                  description:
+                      "A passionate software developer and technology enthusiast with 2 years of experience in OpenSource projects. I'm always eager to learn new technologies and firmly believe in the power of teamwork and collaboration to achieve meaningful results in software development. My goal is to continue growing and contributing to the field of software development, with a special emphasis on Flutter."),
             ),
             TalkModel(
               start: "13:10",
@@ -37,10 +47,15 @@ class TalksContainer extends StateNotifier<List<TalkModel>> {
               description:
                   "CSS no deja de evolucionar rápidamente. Te traigo demos y ejemplos de lo que puedes hacer con CSS ahora",
               speaker: SpeakerModel(
-                img: "https://www.miduconf.com/img/speakers/rauchg.jpg",
-                name: "Gullermo Rauch",
-                job: "CEO @ Vercel",
-              ),
+                  img: "https://www.miduconf.com/img/speakers/rauchg.jpg",
+                  name: "Angelica Guzman",
+                  job: "Fairplay BE JR",
+                  tags: [
+                    "Software Engineer",
+                    "Opensource",
+                  ],
+                  description:
+                      "A passionate software developer and technology enthusiast with 2 years of experience in OpenSource projects. I'm always eager to learn new technologies and firmly believe in the power of teamwork and collaboration to achieve meaningful results in software development. My goal is to continue growing and contributing to the field of software development, with a special emphasis on Flutter."),
             ),
           ],
         );
