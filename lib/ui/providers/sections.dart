@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:unicon/domain/models/section_model.dart';
-import 'package:unicon/ui/organism/home_body.dart';
-import 'package:unicon/ui/organism/vision.dart';
+import 'package:unicon/ui/views/home_body.dart';
+import 'package:unicon/ui/views/pre_register.dart';
+import 'package:unicon/ui/views/schedule.dart';
+import 'package:unicon/ui/views/vision.dart';
 
 class SectionCollection extends StateNotifier<List<SectionModel<Widget>>> {
   SectionCollection()
@@ -17,13 +19,13 @@ class SectionCollection extends StateNotifier<List<SectionModel<Widget>>> {
               name: "Vision",
               content: const VisionSection(),
             ),
-            SectionModel<HomeBody>(
+            SectionModel<Schedule>(
               name: "Exibitor",
-              content: const HomeBody(),
+              content: const Schedule(),
             ),
-            SectionModel<HomeBody>(
+            SectionModel<PreRegisterView>(
               name: "Join Us",
-              content: const HomeBody(),
+              content: const PreRegisterView(),
             ),
             SectionModel<HomeBody>(
                 name: "Become Speaker", content: const HomeBody()),
@@ -36,6 +38,17 @@ class SectionCollection extends StateNotifier<List<SectionModel<Widget>>> {
     state = [...state];
 
     return Future(() => true);
+  }
+
+  Future<int> goToNext() {
+    int index = 0;
+    for (SectionModel<Widget> s in state) {
+      if (s.active) {
+        break;
+      }
+      index += 0;
+    }
+    return Future(() => index);
   }
 
   Future<bool> reset() {
