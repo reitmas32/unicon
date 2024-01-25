@@ -43,6 +43,12 @@ dependencies:
   flutter_timer_countdown: ^1.0.7
   scrollable_positioned_list: ^0.3.8
   eva_icons_flutter: ^3.1.0
+  easy_debounce: ^2.0.3
+  flutter_carousel_widget: ^2.2.0
+  section_scroll:
+    git: 
+      url: https://github.com/reitmas32/section_scroll.git
+      ref: main
 
 dev_dependencies:
   flutter_test:
@@ -73,6 +79,7 @@ flutter:
 
   assets:
     - assets/
+    - assets/speakers/
   #An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
