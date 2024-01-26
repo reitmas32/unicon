@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:unicon/domain/services/pre_register.dart';
 import 'package:unicon/ui/providers/theme.dart';
 
 class PreRegisterView extends ConsumerStatefulWidget {
@@ -13,6 +14,12 @@ class PreRegisterView extends ConsumerStatefulWidget {
 }
 
 class _PreRegisterViewState extends ConsumerState<PreRegisterView> {
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
+  TextEditingController universityNameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController commentsController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -20,7 +27,8 @@ class _PreRegisterViewState extends ConsumerState<PreRegisterView> {
     return SizedBox(
       height: size.height * 0.87,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 300),
+        padding:
+            EdgeInsets.symmetric(horizontal: size.aspectRatio > 1.5 ? 300 : 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -34,34 +42,45 @@ class _PreRegisterViewState extends ConsumerState<PreRegisterView> {
             const SizedBox(
               height: 100,
             ),
-            const Row(
+            Row(
               children: [
                 Expanded(
                   flex: 1,
                   child: CustonTextField(
                     lable: "First Name's *",
-                    padding: EdgeInsets.symmetric(vertical: 25, horizontal: 10),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 25, horizontal: 10),
+                    controller: firstNameController,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 50,
                 ),
                 Expanded(
                   flex: 1,
                   child: CustonTextField(
                     lable: "Last Names's *",
-                    padding: EdgeInsets.symmetric(vertical: 25, horizontal: 10),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 25, horizontal: 10),
+                    controller: lastNameController,
                   ),
                 ),
               ],
             ),
-            const CustonTextField(
+            CustonTextField(
               lable: "Email *",
-              padding: EdgeInsets.symmetric(vertical: 25, horizontal: 10),
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+              controller: emailController,
             ),
-            const CustonTextField(
+            CustonTextField(
               lable: "University / Companie",
-              padding: EdgeInsets.symmetric(vertical: 25, horizontal: 10),
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+              controller: universityNameController,
+            ),
+            CustonTextField(
+              lable: "Why are you interested in Unicon?",
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+              controller: commentsController,
             ),
             Padding(
               padding: const EdgeInsets.all(25.0),
@@ -82,8 +101,17 @@ class _PreRegisterViewState extends ConsumerState<PreRegisterView> {
                         ), // Borde blanco
                       ),
                     ),
-                    onPressed: () {
-                      // TODO: Call API
+                    onPressed: () async {
+                      final router = PreRegister();
+                      router.post(
+                        PreRegisterRequest(
+                          firstName: firstNameController.text,
+                          lastName: lastNameController.text,
+                          email: emailController.text,
+                          comments: commentsController.text,
+                          university: universityNameController.text,
+                        ),
+                      );
                     },
                     child: Text(
                       'Confirm',
@@ -105,11 +133,18 @@ class _PreRegisterViewState extends ConsumerState<PreRegisterView> {
 }
 
 class CustonTextField extends StatelessWidget {
-  const CustonTextField({super.key, required this.lable, this.padding});
+  const CustonTextField({
+    super.key,
+    required this.lable,
+    this.padding,
+    this.controller,
+  });
 
   final String lable;
 
   final EdgeInsetsGeometry? padding;
+
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
@@ -130,10 +165,11 @@ class CustonTextField extends StatelessWidget {
                 ),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 8.0),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: TextField(
-                decoration: InputDecoration(
+                controller: controller,
+                decoration: const InputDecoration(
                   contentPadding: EdgeInsets.all(12.0),
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(

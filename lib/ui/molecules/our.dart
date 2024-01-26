@@ -12,28 +12,34 @@ class OurWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            ourModel.title,
-            style: GoogleFonts.jetBrainsMono(
-              fontSize: 30,
+    final size = MediaQuery.of(context).size;
+
+    return SizedBox(
+      height: size.aspectRatio > 1.5 ? size.height * 0.4 : size.height * 0.25,
+      width: 400,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 30),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              ourModel.title,
+              style: GoogleFonts.jetBrainsMono(
+                fontSize: size.aspectRatio > 1.5 ? 30 : 20,
+              ),
             ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Text(
-            ourModel.description,
-            style: GoogleFonts.jetBrainsMono(
-              fontSize: 20,
+            const SizedBox(
+              height: 20,
             ),
-            textAlign: TextAlign.justify,
-          )
-        ],
+            Text(
+              ourModel.description,
+              style: GoogleFonts.jetBrainsMono(
+                fontSize: size.aspectRatio > 1.5 ? 20 : 15,
+              ),
+              textAlign: TextAlign.justify,
+            )
+          ],
+        ),
       ),
     );
   }

@@ -19,66 +19,65 @@ class VisionSection extends ConsumerWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 100),
+            padding: size.aspectRatio > 1.5
+                ? const EdgeInsets.symmetric(horizontal: 100)
+                : const EdgeInsets.symmetric(horizontal: 10),
             child: SizedBox(
-              height: size.height * 0.23,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
+              height: size.aspectRatio > 1.5 ? size.height * 0.23 : size.height,
+              child: Wrap(
+                crossAxisAlignment: WrapCrossAlignment.center,
+                alignment: WrapAlignment.center,
                 children: ours
-                    .map((e) => [
-                          Expanded(
-                            flex: 1,
-                            child: OurWidget(
-                              ourModel: e,
-                            ),
-                          ),
-                          if (e != ours.last) const VerticalDivider(),
-                        ])
-                    .expand((element) => element)
+                    .map(
+                      (e) => OurWidget(
+                        ourModel: e,
+                      ),
+                    )
                     .toList(),
               ),
             ),
           ),
-          SizedBox(
-            height: size.height * 0.6,
-            width: size.width * 0.9,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 100),
-              child: Center(
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Areas",
-                      style: GoogleFonts.jetBrainsMono(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
+          if (size.aspectRatio > 1.5)
+            SizedBox(
+              height: size.height * 0.6,
+              width: size.width * 0.9,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 100),
+                child: Center(
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Areas",
+                        style: GoogleFonts.jetBrainsMono(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    const SizedBox(
-                      width: 200,
-                    ),
-                    SizedBox(
-                      width: size.width * 0.5,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: areas
-                            .map(
-                              (e) => AreaWidget(
-                                lable: e,
-                              ),
-                            )
-                            .toList(),
+                      const SizedBox(
+                        width: 200,
                       ),
-                    ),
-                  ],
+                      SizedBox(
+                        width: size.width * 0.5,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: areas
+                              .map(
+                                (e) => AreaWidget(
+                                  lable: e,
+                                ),
+                              )
+                              .toList(),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          )
+            )
         ],
       ),
     );

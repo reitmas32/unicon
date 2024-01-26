@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:section_scroll/section_scroll.dart';
 import 'package:unicon/ui/organism/background.dart';
+import 'package:unicon/ui/organism/pre_register_layer.dart';
+import 'package:unicon/ui/providers/section_reader.dart';
 import 'package:unicon/ui/providers/sections.dart';
 
 class HomePage extends ConsumerStatefulWidget {
@@ -14,21 +16,16 @@ class HomePage extends ConsumerStatefulWidget {
 }
 
 class _HomePageState extends ConsumerState<HomePage> {
-  ScrollController scrollController = ScrollController();
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     final sections = ref.watch(sectionsProvider);
+    final scrollController = ref.watch(sectionsReaderProvider);
     final size = MediaQuery.of(context).size;
     return Scaffold(
       body: BackGroundWidget(
         child: Stack(
           children: [
+            const PreRegisterLayer(),
             Column(
               children: [
                 SizedBox(

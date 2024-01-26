@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:unicon/domain/models/section_model.dart';
 import 'package:unicon/ui/views/home_body.dart';
 import 'package:unicon/ui/views/pre_register.dart';
-import 'package:unicon/ui/views/schedule.dart';
 import 'package:unicon/ui/views/vision.dart';
 
 class SectionCollection extends StateNotifier<List<SectionModel<Widget>>> {
@@ -19,16 +18,14 @@ class SectionCollection extends StateNotifier<List<SectionModel<Widget>>> {
               name: "Vision",
               content: const VisionSection(),
             ),
-            SectionModel<Schedule>(
-              name: "Exibitor",
-              content: const Schedule(),
-            ),
+            //SectionModel<Schedule>(
+            //  name: "Exibitor",
+            //  content: const Schedule(),
+            //),
             SectionModel<PreRegisterView>(
               name: "Join Us",
               content: const PreRegisterView(),
             ),
-            SectionModel<HomeBody>(
-                name: "Become Speaker", content: const HomeBody()),
           ],
         );
 

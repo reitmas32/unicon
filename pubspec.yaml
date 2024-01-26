@@ -45,6 +45,8 @@ dependencies:
   eva_icons_flutter: ^3.1.0
   easy_debounce: ^2.0.3
   flutter_carousel_widget: ^2.2.0
+  markdown_widget: ^2.3.2+3
+  http: ^1.2.0
   section_scroll:
     git: 
       url: https://github.com/reitmas32/section_scroll.git
