@@ -3,7 +3,7 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 
-const RESOURCES = {"main.dart.js": "fb2fab8e6e41305b9197ed0cf0a7f42d",
+const RESOURCES = {"main.dart.js": "36930e81348a11f61cca11f980ec05ee",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-maskable-192.png": "c457ef57daa1d16f64b27b786ec2ea3c",
@@ -16,14 +16,14 @@ const RESOURCES = {"main.dart.js": "fb2fab8e6e41305b9197ed0cf0a7f42d",
 "canvaskit/skwasm.js": "87063acf45c5e1ab9565dcf06b0c18b8",
 "canvaskit/chromium/canvaskit.wasm": "143af6ff368f9cd21c863bfa4274c406",
 "canvaskit/chromium/canvaskit.js": "0ae8bbcc58155679458a0f7a00f66873",
-"index.html": "4477d19d87ca6ddbbc1b85ba0bb272c4",
-"/": "4477d19d87ca6ddbbc1b85ba0bb272c4",
+"index.html": "29f9de33425b07ab935253705862a6af",
+"/": "29f9de33425b07ab935253705862a6af",
 "version.json": "72d661db826a6867c90d2b8b44f3967f",
 "manifest.json": "34ce84f8fdb481aee0a4402da80cfc61",
 "assets/packages/eva_icons_flutter/lib/fonts/Eva-Icons.ttf": "a71dbd49ad4a52020638190e30ac52e0",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "89ed8f4e49bcdfc0b5bfc9b24591e347",
 "assets/AssetManifest.bin": "c951332c4f4590df85b385289ea0cee5",
-"assets/fonts/MaterialIcons-Regular.otf": "32fce58e2acb9c420eab0fe7b828b761",
+"assets/fonts/MaterialIcons-Regular.otf": "0cb995d699e635bf7efbe0df45b936a8",
 "assets/AssetManifest.json": "62da93486d1d7f0fbec768425e6bfa0a",
 "assets/AssetManifest.bin.json": "784d65dbe7fe612387a5cc0b2c1b8058",
 "assets/shaders/ink_sparkle.frag": "4096b5150bac93c41cbc9b45276bd90f",
@@ -36,7 +36,7 @@ const RESOURCES = {"main.dart.js": "fb2fab8e6e41305b9197ed0cf0a7f42d",
 "assets/assets/Oswaldo%2520Rafael%2520%2520Zamora%2520Ram%25C3%25ADrez%2520%2520-%25202024-01-19.pdf": "768cf8f4eec7b0f185df9407564c2502",
 "assets/assets/SE2014420231221.txt": "6846ab81f6fe51b1527f52810769facd",
 "assets/assets/unicon.svg": "af034143e129a1eba59f696289e58cde",
-"assets/NOTICES": "2db9f8cd30b9d4700922f95adaf4f2e5",
+"assets/NOTICES": "face88de6b7713d78de614b9fc2de151",
 "flutter.js": "7d69e653079438abfbb24b82a655b0a4"};
 // The application shell files that are downloaded before a service worker can
 // start.
