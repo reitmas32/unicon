@@ -9,6 +9,7 @@ class PreRegisterLayer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     final buttons = [
       SimpleButtonModel(
         lable: "Pre Register",
@@ -17,28 +18,31 @@ class PreRegisterLayer extends StatelessWidget {
     ];
 
     return Positioned(
-      top: 80,
-      right: 80,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: buttons
-            .map((e) => [
-                  AuthButton(
-                    label: e.lable,
-                    onPress: e.onPressed,
-                  ),
-                  if (e != buttons.last)
-                    Text(
-                      " | ",
-                      style: GoogleFonts.jetBrainsMono(
-                        fontSize: 27,
-                        fontWeight: FontWeight.w100,
-                        color: Colors.white,
-                      ),
+      top: size.aspectRatio <= 1.1 ? 15 : 80,
+      right: size.aspectRatio <= 1.1 ? 0 : 80,
+      left: size.aspectRatio <= 1.1 ? 0 : null,
+      child: Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: buttons
+              .map((e) => [
+                    AuthButton(
+                      label: e.lable,
+                      onPress: e.onPressed,
                     ),
-                ])
-            .expand((element) => element)
-            .toList(),
+                    if (e != buttons.last)
+                      Text(
+                        " | ",
+                        style: GoogleFonts.jetBrainsMono(
+                          fontSize: 27,
+                          fontWeight: FontWeight.w100,
+                          color: Colors.white,
+                        ),
+                      ),
+                  ])
+              .expand((element) => element)
+              .toList(),
+        ),
       ),
     );
   }

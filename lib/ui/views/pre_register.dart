@@ -24,109 +24,108 @@ class _PreRegisterViewState extends ConsumerState<PreRegisterView> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    return SizedBox(
-      height: size.height * 0.87,
-      child: Padding(
-        padding:
-            EdgeInsets.symmetric(horizontal: size.aspectRatio > 1.5 ? 300 : 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Pre Register",
-              style: GoogleFonts.jetBrainsMono(
-                fontSize: 40,
-                fontWeight: FontWeight.bold,
+    return Padding(
+      padding:
+          EdgeInsets.symmetric(horizontal: size.aspectRatio > 1.5 ? 300 : 20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "Pre Register",
+            style: GoogleFonts.jetBrainsMono(
+              fontSize: 40,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(
+            height: 100,
+          ),
+          Row(
+            children: [
+              Expanded(
+                flex: 1,
+                child: CustonTextField(
+                  lable: "First Name's *",
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 25, horizontal: 10),
+                  controller: firstNameController,
+                ),
               ),
-            ),
-            const SizedBox(
-              height: 100,
-            ),
-            Row(
+              const SizedBox(
+                width: 50,
+              ),
+              Expanded(
+                flex: 1,
+                child: CustonTextField(
+                  lable: "Last Names's *",
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 25, horizontal: 10),
+                  controller: lastNameController,
+                ),
+              ),
+            ],
+          ),
+          CustonTextField(
+            lable: "Email *",
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            controller: emailController,
+          ),
+          CustonTextField(
+            lable: "University / Companie",
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            controller: universityNameController,
+          ),
+          CustonTextField(
+            lable: "Why are you interested in Unicon?",
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            controller: commentsController,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(25.0),
+            child: Row(
               children: [
-                Expanded(
-                  flex: 1,
-                  child: CustonTextField(
-                    lable: "First Name's *",
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 25, horizontal: 10),
-                    controller: firstNameController,
+                const Spacer(),
+                TextButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor:
+                        AppTheme.purple, // Color del fondo del botón
+                    foregroundColor: Colors.black, // Color del texto del botón
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.zero, // Bordes cuadrados
+                      side: BorderSide(
+                        color: Colors.black,
+                        width: 1.0,
+                      ), // Borde blanco
+                    ),
                   ),
-                ),
-                const SizedBox(
-                  width: 50,
-                ),
-                Expanded(
-                  flex: 1,
-                  child: CustonTextField(
-                    lable: "Last Names's *",
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 25, horizontal: 10),
-                    controller: lastNameController,
+                  onPressed: () async {
+                    final router = PreRegister();
+                    router.post(
+                      PreRegisterRequest(
+                        firstName: firstNameController.text,
+                        lastName: lastNameController.text,
+                        email: emailController.text,
+                        comments: commentsController.text,
+                        university: universityNameController.text,
+                      ),
+                    );
+                  },
+                  child: Text(
+                    'Confirm',
+                    style: GoogleFonts.jetBrainsMono(
+                      color: Colors.black,
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ],
             ),
-            CustonTextField(
-              lable: "Email *",
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-              controller: emailController,
-            ),
-            CustonTextField(
-              lable: "University / Companie",
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-              controller: universityNameController,
-            ),
-            CustonTextField(
-              lable: "Why are you interested in Unicon?",
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-              controller: commentsController,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(25.0),
-              child: Row(
-                children: [
-                  const Spacer(),
-                  TextButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor:
-                          AppTheme.purple, // Color del fondo del botón
-                      foregroundColor:
-                          Colors.black, // Color del texto del botón
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.zero, // Bordes cuadrados
-                        side: BorderSide(
-                          color: Colors.black,
-                          width: 1.0,
-                        ), // Borde blanco
-                      ),
-                    ),
-                    onPressed: () async {
-                      final router = PreRegister();
-                      router.post(
-                        PreRegisterRequest(
-                          firstName: firstNameController.text,
-                          lastName: lastNameController.text,
-                          email: emailController.text,
-                          comments: commentsController.text,
-                          university: universityNameController.text,
-                        ),
-                      );
-                    },
-                    child: Text(
-                      'Confirm',
-                      style: GoogleFonts.jetBrainsMono(
-                        color: Colors.black,
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            )
-          ],
-        ),
+          ),
+          SizedBox(
+            height: 200,
+          ),
+        ],
       ),
     );
   }

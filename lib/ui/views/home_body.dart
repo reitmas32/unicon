@@ -30,7 +30,7 @@ class _HomeBodyState extends ConsumerState<HomeBody> {
     final double descriptionfontSizeCountDown =
         MediaQuery.of(context).size.aspectRatio > 0.7 ? 25 : 12;
 
-    DateTime remainingTime = DateTime(2024, 5, 10);
+    DateTime remainingTime = DateTime(2024, 4, 20);
 
     return SizedBox(
       height: size.height * 0.87,
