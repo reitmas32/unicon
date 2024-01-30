@@ -37,7 +37,7 @@ class VisionSection extends ConsumerWidget {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 100,
           ),
           if (size.aspectRatio > 1.5)

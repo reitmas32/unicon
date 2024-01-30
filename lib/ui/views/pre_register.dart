@@ -98,81 +98,107 @@ class _PreRegisterViewState extends ConsumerState<PreRegisterView> {
                   onPressed: () async {
                     final router = PreRegister();
 
-                    router.post(
-                      PreRegisterRequest(
-                        firstName: firstNameController.text,
-                        lastName: lastNameController.text,
-                        email: emailController.text,
-                        comments: commentsController.text,
-                        university: universityNameController.text,
-                      ),
-                    );
+                    String message = "";
 
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          content: SizedBox(
-                            width: 300,
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                SvgPicture.asset(
-                                  "assets/unicon.svg",
-                                  height: 100,
-                                ),
-                                const SizedBox(
-                                  height: 50,
-                                ),
-                                Text(
-                                  "¡Tu preregistro ha sido enviado con éxito! Por favor, revisa tu bandeja de correo electrónico, ya que te informaremos allí sobre los próximos pasos. ¡Gracias!",
-                                  style: GoogleFonts.jetBrainsMono(
-                                    color: Colors.white,
-                                    fontSize: 15,
-                                  ),
-                                  textAlign: TextAlign.justify,
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                              ],
-                            ),
-                          ),
-                          shape: const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.zero,
-                            side: BorderSide(
-                              color: Colors.white, // Color del borde
-                              width: 1.0, // Grosor del borde
-                            ),
-                          ),
+                    if (firstNameController.text.isEmpty) {
+                      message = "First name is required*";
+                    } else if (lastNameController.text.isEmpty) {
+                      message = "Last name is required*";
+                    } else if (emailController.text.isEmpty) {
+                      message = "Email is required*";
+                    } else if (!isEmail(emailController.text)) {
+                      message = "Email incorrect";
+                    }
+
+                    if (message != "") {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
                           backgroundColor: Colors.black,
-                          actions: [
-                            TextButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: AppTheme
-                                    .purple, // Color del fondo del botón
-                                foregroundColor:
-                                    Colors.black, // Color del texto del botón
-                                shape: const RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.zero, // Bordes cuadrados
-                                  side: BorderSide(
-                                      color: Colors.black,
-                                      width: 1.0), // Borde blanco
-                                ),
-                              ),
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                              child: const Text(
-                                'Confirm',
+                          content: Text(
+                            message,
+                            style: GoogleFonts.jetBrainsMono(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      );
+                    } else {
+                      router.post(
+                        PreRegisterRequest(
+                          firstName: firstNameController.text,
+                          lastName: lastNameController.text,
+                          email: emailController.text,
+                          comments: commentsController.text,
+                          university: universityNameController.text,
+                        ),
+                      );
+
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            content: SizedBox(
+                              width: 300,
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SvgPicture.asset(
+                                    "assets/unicon.svg",
+                                    height: 100,
+                                  ),
+                                  const SizedBox(
+                                    height: 50,
+                                  ),
+                                  Text(
+                                    "¡Tu preregistro ha sido enviado con éxito! Por favor, revisa tu bandeja de correo electrónico, ya que te informaremos allí sobre los próximos pasos. ¡Gracias!",
+                                    style: GoogleFonts.jetBrainsMono(
+                                      color: Colors.white,
+                                      fontSize: 15,
+                                    ),
+                                    textAlign: TextAlign.justify,
+                                  ),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                ],
                               ),
                             ),
-                          ],
-                        );
-                      },
-                    );
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.zero,
+                              side: BorderSide(
+                                color: Colors.white, // Color del borde
+                                width: 1.0, // Grosor del borde
+                              ),
+                            ),
+                            backgroundColor: Colors.black,
+                            actions: [
+                              TextButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: AppTheme
+                                      .purple, // Color del fondo del botón
+                                  foregroundColor:
+                                      Colors.black, // Color del texto del botón
+                                  shape: const RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.zero, // Bordes cuadrados
+                                    side: BorderSide(
+                                        color: Colors.black,
+                                        width: 1.0), // Borde blanco
+                                  ),
+                                ),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: const Text(
+                                  'Confirm',
+                                ),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    }
                   },
                   child: Text(
                     'Confirm',
@@ -192,6 +218,14 @@ class _PreRegisterViewState extends ConsumerState<PreRegisterView> {
         ],
       ),
     );
+  }
+
+  bool isEmail(String email) {
+    // Expresión regular para validar un correo electrónico
+    RegExp regex = RegExp(r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$');
+
+    // Utiliza el método test() de la expresión regular para verificar si la cadena coincide
+    return regex.hasMatch(email);
   }
 }
 
