@@ -14,7 +14,7 @@ class VisionSection extends ConsumerWidget {
     final areas = ref.watch(areasProvider);
     final size = MediaQuery.of(context).size;
     return SizedBox(
-      height: size.height * 0.87,
+      height: size.height,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -37,12 +37,16 @@ class VisionSection extends ConsumerWidget {
               ),
             ),
           ),
+          SizedBox(
+            height: 100,
+          ),
           if (size.aspectRatio > 1.5)
             SizedBox(
               height: size.height * 0.6,
               width: size.width * 0.9,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 100),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 100, vertical: 50),
                 child: Center(
                   child: Row(
                     mainAxisSize: MainAxisSize.max,

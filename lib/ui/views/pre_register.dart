@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:unicon/domain/services/pre_register.dart';
 import 'package:unicon/ui/providers/theme.dart';
@@ -37,8 +38,8 @@ class _PreRegisterViewState extends ConsumerState<PreRegisterView> {
               fontWeight: FontWeight.bold,
             ),
           ),
-          const SizedBox(
-            height: 100,
+          SizedBox(
+            height: size.aspectRatio >= 1.5 ? 100 : 10,
           ),
           Row(
             children: [
@@ -46,8 +47,6 @@ class _PreRegisterViewState extends ConsumerState<PreRegisterView> {
                 flex: 1,
                 child: CustonTextField(
                   lable: "First Name's *",
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 25, horizontal: 10),
                   controller: firstNameController,
                 ),
               ),
@@ -58,8 +57,6 @@ class _PreRegisterViewState extends ConsumerState<PreRegisterView> {
                 flex: 1,
                 child: CustonTextField(
                   lable: "Last Names's *",
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 25, horizontal: 10),
                   controller: lastNameController,
                 ),
               ),
@@ -100,6 +97,7 @@ class _PreRegisterViewState extends ConsumerState<PreRegisterView> {
                   ),
                   onPressed: () async {
                     final router = PreRegister();
+
                     router.post(
                       PreRegisterRequest(
                         firstName: firstNameController.text,
@@ -108,6 +106,72 @@ class _PreRegisterViewState extends ConsumerState<PreRegisterView> {
                         comments: commentsController.text,
                         university: universityNameController.text,
                       ),
+                    );
+
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          content: SizedBox(
+                            width: 300,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SvgPicture.asset(
+                                  "assets/unicon.svg",
+                                  height: 100,
+                                ),
+                                const SizedBox(
+                                  height: 50,
+                                ),
+                                Text(
+                                  "¡Tu preregistro ha sido enviado con éxito! Por favor, revisa tu bandeja de correo electrónico, ya que te informaremos allí sobre los próximos pasos. ¡Gracias!",
+                                  style: GoogleFonts.jetBrainsMono(
+                                    color: Colors.white,
+                                    fontSize: 15,
+                                  ),
+                                  textAlign: TextAlign.justify,
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                              ],
+                            ),
+                          ),
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.zero,
+                            side: BorderSide(
+                              color: Colors.white, // Color del borde
+                              width: 1.0, // Grosor del borde
+                            ),
+                          ),
+                          backgroundColor: Colors.black,
+                          actions: [
+                            TextButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: AppTheme
+                                    .purple, // Color del fondo del botón
+                                foregroundColor:
+                                    Colors.black, // Color del texto del botón
+                                shape: const RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.zero, // Bordes cuadrados
+                                  side: BorderSide(
+                                      color: Colors.black,
+                                      width: 1.0), // Borde blanco
+                                ),
+                              ),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: const Text(
+                                'Confirm',
+                              ),
+                            ),
+                          ],
+                        );
+                      },
                     );
                   },
                   child: Text(
@@ -122,7 +186,7 @@ class _PreRegisterViewState extends ConsumerState<PreRegisterView> {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 200,
           ),
         ],
@@ -147,9 +211,10 @@ class CustonTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return SizedBox(
       child: Padding(
-        padding: padding ?? const EdgeInsets.all(8.0),
+        padding: padding ?? const EdgeInsets.all(1.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -159,7 +224,7 @@ class CustonTextField extends StatelessWidget {
                 lable,
                 style: GoogleFonts.jetBrainsMono(
                   color: Colors.white,
-                  fontSize: 20,
+                  fontSize: size.height > 1000 ? 20 : 15,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -168,9 +233,9 @@ class CustonTextField extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: TextField(
                 controller: controller,
-                decoration: const InputDecoration(
-                  contentPadding: EdgeInsets.all(12.0),
-                  focusedBorder: OutlineInputBorder(
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.all(size.height > 1000 ? 12 : 8),
+                  focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(
                       color: Colors.white,
                       width: 1.0,
@@ -178,7 +243,7 @@ class CustonTextField extends StatelessWidget {
                     borderRadius:
                         BorderRadius.zero, // O cualquier otro radio que desees
                   ),
-                  enabledBorder: OutlineInputBorder(
+                  enabledBorder: const OutlineInputBorder(
                     borderSide: BorderSide(
                       color: Colors.white,
                       width: 1.0,
