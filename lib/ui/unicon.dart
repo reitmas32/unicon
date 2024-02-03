@@ -1,24 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:unicon/ui/pages/error.dart';
-import 'package:unicon/ui/pages/home.dart';
+import 'package:unicon/ui/pages/error/page.dart';
+import 'package:unicon/ui/pages/home/page.dart';
 import 'package:unicon/ui/providers/theme.dart';
 
-CustomTransitionPage buildPageWithDefaultTransition<T>({
-  required BuildContext context,
-  required GoRouterState state,
-  required Widget child,
-}) {
-  return CustomTransitionPage<T>(
-    key: state.pageKey,
-    child: child,
-    transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-        ScaleTransition(scale: animation, child: child),
-  );
-}
-
+/// Main App
 class UniConApp extends ConsumerStatefulWidget {
+  /// Constructor
   const UniConApp({
     super.key,
   });
@@ -29,24 +18,26 @@ class UniConApp extends ConsumerStatefulWidget {
 
 class _UniConAppState extends ConsumerState<UniConApp> {
   final GoRouter _router = GoRouter(
-    routes: [
+    routes: <RouteBase>[
       GoRoute(
-        path: "/",
-        builder: (context, state) => ScrollConfiguration(
+        path: '/',
+        builder: (BuildContext context, GoRouterState state) =>
+            ScrollConfiguration(
           behavior: MyCustomScrollBehavior(),
           child: const HomePage(),
         ),
       ),
     ],
-    errorBuilder: (context, state) => const ErrorPage(),
+    errorBuilder: (BuildContext context, GoRouterState state) =>
+        const ErrorPage(),
   );
 
   @override
   Widget build(BuildContext context) {
-    final isDarkMode = ref.watch(isDarkModeProvider);
+    final bool isDarkMode = ref.watch(isDarkModeProvider);
 
     return MaterialApp.router(
-      title: "UniCon",
+      title: 'UniCon',
       debugShowCheckedModeBanner: false,
       routerConfig: _router,
       theme: isDarkMode ? AppTheme.uniDarkTheme : AppTheme.uniLightTheme,
@@ -56,6 +47,7 @@ class _UniConAppState extends ConsumerState<UniConApp> {
   }
 }
 
+/// Behavior by hide Scroll
 class MyCustomScrollBehavior extends ScrollBehavior {
   @override
   Widget buildScrollbar(

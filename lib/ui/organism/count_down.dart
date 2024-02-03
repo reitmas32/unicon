@@ -4,12 +4,14 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+/// Countdown timer Widget
 class CountDownContent extends ConsumerWidget {
+  /// Constructor
   const CountDownContent({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final size = MediaQuery.of(context).size;
+    final Size size = MediaQuery.of(context).size;
     final double fontSize =
         size.height > 1200 ? size.height / 70 : size.height / 50;
 
@@ -19,22 +21,22 @@ class CountDownContent extends ConsumerWidget {
     final double descriptionfontSizeCountDown =
         MediaQuery.of(context).size.aspectRatio > 0.7 ? 25 : 12;
 
-    final widthContent = MediaQuery.of(context).size.aspectRatio > 0.7
+    final double widthContent = MediaQuery.of(context).size.aspectRatio > 0.7
         ? size.height * 0.8
         : size.width;
 
-    DateTime remainingTime = DateTime(2024, 5, 10);
+    final DateTime remainingTime = DateTime(2024, 5, 10);
     return SizedBox(
       height: size.height - 300,
       width: widthContent,
       child: Stack(
-        children: [
+        children: <Widget>[
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+              children: <Widget>[
                 SvgPicture.network(
-                  "https://raw.githubusercontent.com/reitmas32/unicon/1129ea9afbb29c0a299c8684a345b47202bc7eaa/assets/unicon.svg",
+                  'https://raw.githubusercontent.com/reitmas32/unicon/1129ea9afbb29c0a299c8684a345b47202bc7eaa/assets/unicon.svg',
                   height: size.height / 4,
                 ),
                 TimerCountdown(
@@ -55,7 +57,8 @@ class CountDownContent extends ConsumerWidget {
                 SizedBox(
                   width: widthContent - (widthContent == size.width ? 50 : 200),
                   child: SelectableText(
-                    "Próximamente: Un evento sin precedentes en la Ciudad de México para el intercambio de ideas y experiencias.",
+                    '''
+Próximamente: Un evento sin precedentes en la Ciudad de México para el intercambio de ideas y experiencias.''',
                     style: GoogleFonts.jetBrainsMono(fontSize: fontSize),
                     textAlign: TextAlign.center,
                   ),

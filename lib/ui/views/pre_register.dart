@@ -5,7 +5,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:unicon/domain/services/pre_register.dart';
 import 'package:unicon/ui/providers/theme.dart';
 
+///
 class PreRegisterView extends ConsumerStatefulWidget {
+  ///
   const PreRegisterView({
     super.key,
   });
@@ -23,16 +25,16 @@ class _PreRegisterViewState extends ConsumerState<PreRegisterView> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    final Size size = MediaQuery.of(context).size;
 
     return Padding(
       padding:
           EdgeInsets.symmetric(horizontal: size.aspectRatio > 1.5 ? 300 : 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+        children: <Widget>[
           Text(
-            "Pre Register",
+            'Pre Register',
             style: GoogleFonts.jetBrainsMono(
               fontSize: 40,
               fontWeight: FontWeight.bold,
@@ -42,9 +44,8 @@ class _PreRegisterViewState extends ConsumerState<PreRegisterView> {
             height: size.aspectRatio >= 1.5 ? 100 : 10,
           ),
           Row(
-            children: [
+            children: <Widget>[
               Expanded(
-                flex: 1,
                 child: CustonTextField(
                   lable: "First Name's *",
                   controller: firstNameController,
@@ -54,7 +55,6 @@ class _PreRegisterViewState extends ConsumerState<PreRegisterView> {
                 width: 50,
               ),
               Expanded(
-                flex: 1,
                 child: CustonTextField(
                   lable: "Last Names's *",
                   controller: lastNameController,
@@ -63,24 +63,24 @@ class _PreRegisterViewState extends ConsumerState<PreRegisterView> {
             ],
           ),
           CustonTextField(
-            lable: "Email *",
+            lable: 'Email *',
             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
             controller: emailController,
           ),
           CustonTextField(
-            lable: "University / Companie",
+            lable: 'University / Companie',
             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
             controller: universityNameController,
           ),
           CustonTextField(
-            lable: "Why are you interested in Unicon?",
+            lable: 'Why are you interested in Unicon?',
             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
             controller: commentsController,
           ),
           Padding(
             padding: const EdgeInsets.all(25.0),
             child: Row(
-              children: [
+              children: <Widget>[
                 const Spacer(),
                 TextButton(
                   style: ElevatedButton.styleFrom(
@@ -88,29 +88,25 @@ class _PreRegisterViewState extends ConsumerState<PreRegisterView> {
                         AppTheme.purple, // Color del fondo del botón
                     foregroundColor: Colors.black, // Color del texto del botón
                     shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.zero, // Bordes cuadrados
-                      side: BorderSide(
-                        color: Colors.black,
-                        width: 1.0,
-                      ), // Borde blanco
+                      side: BorderSide(), // Borde blanco
                     ),
                   ),
                   onPressed: () async {
-                    final router = PreRegister();
+                    final PreRegister router = PreRegister();
 
-                    String message = "";
+                    String message = '';
 
                     if (firstNameController.text.isEmpty) {
-                      message = "First name is required*";
+                      message = 'First name is required*';
                     } else if (lastNameController.text.isEmpty) {
-                      message = "Last name is required*";
+                      message = 'Last name is required*';
                     } else if (emailController.text.isEmpty) {
-                      message = "Email is required*";
+                      message = 'Email is required*';
                     } else if (!isEmail(emailController.text)) {
-                      message = "Email incorrect";
+                      message = 'Email incorrect';
                     }
 
-                    if (message != "") {
+                    if (message != '') {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           backgroundColor: Colors.black,
@@ -142,16 +138,17 @@ class _PreRegisterViewState extends ConsumerState<PreRegisterView> {
                               child: Column(
                                 mainAxisSize: MainAxisSize.min,
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
+                                children: <Widget>[
                                   SvgPicture.asset(
-                                    "assets/unicon.svg",
+                                    'assets/unicon.svg',
                                     height: 100,
                                   ),
                                   const SizedBox(
                                     height: 50,
                                   ),
                                   Text(
-                                    "¡Tu preregistro ha sido enviado con éxito! Por favor, revisa tu bandeja de correo electrónico, ya que te informaremos allí sobre los próximos pasos. ¡Gracias!",
+                                    '''
+¡Tu preregistro ha sido enviado con éxito! Por favor, revisa tu bandeja de correo electrónico, ya que te informaremos allí sobre los próximos pasos. ¡Gracias!''',
                                     style: GoogleFonts.jetBrainsMono(
                                       color: Colors.white,
                                       fontSize: 15,
@@ -165,14 +162,12 @@ class _PreRegisterViewState extends ConsumerState<PreRegisterView> {
                               ),
                             ),
                             shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.zero,
                               side: BorderSide(
                                 color: Colors.white, // Color del borde
-                                width: 1.0, // Grosor del borde
                               ),
                             ),
                             backgroundColor: Colors.black,
-                            actions: [
+                            actions: <Widget>[
                               TextButton(
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: AppTheme
@@ -180,11 +175,7 @@ class _PreRegisterViewState extends ConsumerState<PreRegisterView> {
                                   foregroundColor:
                                       Colors.black, // Color del texto del botón
                                   shape: const RoundedRectangleBorder(
-                                    borderRadius:
-                                        BorderRadius.zero, // Bordes cuadrados
-                                    side: BorderSide(
-                                        color: Colors.black,
-                                        width: 1.0), // Borde blanco
+                                    side: BorderSide(), // Borde blanco
                                   ),
                                 ),
                                 onPressed: () {
@@ -222,14 +213,14 @@ class _PreRegisterViewState extends ConsumerState<PreRegisterView> {
 
   bool isEmail(String email) {
     // Expresión regular para validar un correo electrónico
-    RegExp regex = RegExp(r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$');
-
-    // Utiliza el método test() de la expresión regular para verificar si la cadena coincide
+    final RegExp regex = RegExp(r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$');
     return regex.hasMatch(email);
   }
 }
 
+///
 class CustonTextField extends StatelessWidget {
+  ///
   const CustonTextField({
     super.key,
     required this.lable,
@@ -237,21 +228,24 @@ class CustonTextField extends StatelessWidget {
     this.controller,
   });
 
+  ///
   final String lable;
 
+  ///
   final EdgeInsetsGeometry? padding;
 
+  ///
   final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    final Size size = MediaQuery.of(context).size;
     return SizedBox(
       child: Padding(
         padding: padding ?? const EdgeInsets.all(1.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+          children: <Widget>[
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: Text(
@@ -272,7 +266,6 @@ class CustonTextField extends StatelessWidget {
                   focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(
                       color: Colors.white,
-                      width: 1.0,
                     ),
                     borderRadius:
                         BorderRadius.zero, // O cualquier otro radio que desees
@@ -280,7 +273,6 @@ class CustonTextField extends StatelessWidget {
                   enabledBorder: const OutlineInputBorder(
                     borderSide: BorderSide(
                       color: Colors.white,
-                      width: 1.0,
                     ),
                   ),
                 ),

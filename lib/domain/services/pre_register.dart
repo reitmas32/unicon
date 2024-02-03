@@ -1,13 +1,9 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+/// Request model for pre-registering to the conference
 class PreRegisterRequest {
-  final String firstName;
-  final String lastName;
-  final String email;
-  final String? university;
-  final String? comments;
-
+  /// Constructor
   PreRegisterRequest({
     required this.firstName,
     required this.lastName,
@@ -15,25 +11,46 @@ class PreRegisterRequest {
     this.university,
     this.comments,
   });
+
+  /// First name of attendee
+  final String firstName;
+
+  /// Last name of attendee
+  final String lastName;
+
+  /// Email address of attendee
+  final String email;
+
+  /// University name (optional)
+  final String? university;
+
+  /// Additional comments (optional)
+  final String? comments;
 }
 
+/// Service for pre-registering to the conference
 class PreRegister {
-  final Map<String, String> headers = {
+  /// Constructor
+  PreRegister();
+
+  /// Default headers for requests
+  static final Map<String, String> headers = <String, String>{
     'Content-Type': 'application/json',
   };
 
-  PreRegister();
-
+  /// Sends a POST request to pre-register the user
+  ///
+  /// Returns true if the request succeeded, false otherwise
   Future<bool> post(PreRegisterRequest user) async {
     try {
       // Create Body by Request
       final String bodyRequestSignIn = jsonEncode(
-        {
-          "first_name": user.firstName,
-          "last_name": user.lastName,
-          "email": user.email,
-          "organization": user.university,
-          "comments": user.comments,
+        <String, String?>{
+          'first_name': user.firstName,
+          'last_name': user.lastName,
+          'email': user.email,
+          'organization': user.university,
+          'comments': user.comments,
         },
       );
 
@@ -47,12 +64,12 @@ class PreRegister {
       // Proccess if THe Request is Successfull
       if (response.statusCode == 201) {
         // Get Data
-        return Future(() => true);
+        return Future<bool>(() => true);
       }
     } on Exception {
-      return Future(() => false);
+      return Future<bool>(() => false);
     }
 
-    return Future(() => false);
+    return Future<bool>(() => false);
   }
 }

@@ -1,53 +1,66 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final isDarkModeProvider = StateProvider<bool>((ref) {
+///
+final StateProvider<bool> isDarkModeProvider =
+    StateProvider<bool>((StateProviderRef<bool> ref) {
   return true;
 });
 
+///
 class AppTheme {
-  static const white = Colors.white;
-  static const darkPurple = Color(0xffa37097);
-  static const purple = Color(0xffcdb4c7);
-  static const black = Color(0xff000000);
+  ///
+  static const Color white = Colors.white;
 
-  static final ThemeData uniLightTheme = ThemeData(
-    brightness: Brightness.light,
-    sliderTheme: const SliderThemeData(
-      trackHeight: 25.0,
-      valueIndicatorTextStyle: TextStyle(
-        color: Color.fromARGB(255, 41, 40, 41),
-        fontWeight: FontWeight.bold,
-        fontSize: 15.0,
-      ),
-      valueIndicatorColor: Colors.grey,
-    ),
-    scaffoldBackgroundColor: const Color.fromARGB(255, 233, 227, 227),
-    primaryColor: Colors.green,
-    colorScheme: const ColorScheme(
-      brightness: Brightness.light,
-      primary: Color.fromARGB(255, 239, 237, 237),
-      onPrimary: Color.fromARGB(255, 31, 30, 30),
-      secondary: Color.fromARGB(255, 179, 192, 216),
-      onSecondary: Color.fromARGB(255, 192, 186, 186),
-      error: Color.fromARGB(255, 255, 0, 0),
-      onError: Color.fromARGB(255, 255, 255, 255),
-      background: Color.fromARGB(255, 255, 255, 255),
-      onBackground: Color.fromARGB(255, 255, 255, 255),
-      surface: Color.fromARGB(255, 255, 255, 255),
-      onSurface: Color.fromARGB(255, 255, 255, 255),
-    ),
-    textSelectionTheme: const TextSelectionThemeData(
-      selectionColor: Color.fromARGB(
-        255,
-        97,
-        169,
-        221,
-      ),
-      cursorColor: Colors.purple,
-    ),
-    //Color colorButtonAppBar = Colors.white
-  );
+  ///
+  static const Color darkPurple = Color(0xffa37097);
+
+  ///
+  static const Color purple = Color(0xffcdb4c7);
+
+  ///
+  static const Color black = Color(0xff000000);
+
+  ///
+  static ThemeData get uniLightTheme => ThemeData(
+        brightness: Brightness.light,
+        sliderTheme: const SliderThemeData(
+          trackHeight: 25.0,
+          valueIndicatorTextStyle: TextStyle(
+            color: Color.fromARGB(255, 41, 40, 41),
+            fontWeight: FontWeight.bold,
+            fontSize: 15.0,
+          ),
+          valueIndicatorColor: Colors.grey,
+        ),
+        scaffoldBackgroundColor: const Color.fromARGB(255, 233, 227, 227),
+        primaryColor: Colors.green,
+        colorScheme: const ColorScheme(
+          brightness: Brightness.light,
+          primary: Color.fromARGB(255, 239, 237, 237),
+          onPrimary: Color.fromARGB(255, 31, 30, 30),
+          secondary: Color.fromARGB(255, 179, 192, 216),
+          onSecondary: Color.fromARGB(255, 192, 186, 186),
+          error: Color.fromARGB(255, 255, 0, 0),
+          onError: Color.fromARGB(255, 255, 255, 255),
+          background: Color.fromARGB(255, 255, 255, 255),
+          onBackground: Color.fromARGB(255, 255, 255, 255),
+          surface: Color.fromARGB(255, 255, 255, 255),
+          onSurface: Color.fromARGB(255, 255, 255, 255),
+        ),
+        textSelectionTheme: const TextSelectionThemeData(
+          selectionColor: Color.fromARGB(
+            255,
+            97,
+            169,
+            221,
+          ),
+          cursorColor: Colors.purple,
+        ),
+        //Color colorButtonAppBar = Colors.white
+      );
+
+  ///
   static final ThemeData uniDarkTheme = ThemeData(
     brightness: Brightness.dark,
     scaffoldBackgroundColor: const Color.fromARGB(255, 56, 53, 53),

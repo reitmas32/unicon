@@ -6,12 +6,15 @@ import 'package:markdown_widget/widget/markdown.dart';
 import 'package:unicon/ui/providers/section_reader.dart';
 import 'package:unicon/ui/providers/theme.dart';
 
+/// PreRegisterDialog
 class PreRegisterDialog extends ConsumerWidget {
+  /// Constructor
   const PreRegisterDialog({
     super.key,
   });
 
-  final String text = """
+  /// Info
+  String get text => '''
 # ¿Te Interesa Asistir a UniCon?
 ¡Excelente! Regístrate ahora para estar en nuestra lista de espera y acceder a beneficios exclusivos. Aquí te explicamos cómo funciona:
 
@@ -24,28 +27,28 @@ Atención Importante: Este registro no es un registro oficial para el evento. Es
 Notificación Vía Email: Te enviaremos un correo electrónico en cuanto el registro oficial esté disponible. ¡Asegúrate de registrarte oficialmente en ese momento para confirmar tu asistencia y aprovechar tu descuento!
 
 Estadísticas y Organización: Recopilamos estas inscripciones preliminares para estimar el interés en el evento y asegurarnos de que todo esté perfectamente organizado para nuestros asistentes.
-""";
+''';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final scrollController = ref.watch(sectionsReaderProvider);
-    final size = MediaQuery.of(context).size;
+    final ScrollController scrollController = ref.watch(sectionsReaderProvider);
+    final Size size = MediaQuery.of(context).size;
     return AlertDialog(
       content: SizedBox(
         width: size.aspectRatio > 1.5 ? size.width / 3 : size.width / 1.2,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: <Widget>[
             SvgPicture.asset(
-              "assets/unicon.svg",
+              'assets/unicon.svg',
               height: 100,
             ),
             const SizedBox(
               height: 50,
             ),
             Text(
-              "PreRegister",
+              'PreRegister',
               style: GoogleFonts.jetBrainsMono(
                 color: Colors.white,
                 fontSize: 25,
@@ -63,24 +66,21 @@ Estadísticas y Organización: Recopilamos estas inscripciones preliminares para
         ),
       ),
       shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.zero,
         side: BorderSide(
           color: Colors.white, // Color del borde
-          width: 1.0, // Grosor del borde
         ),
       ),
       backgroundColor: Colors.black,
-      actions: [
+      actions: <Widget>[
         TextButton(
           style: ElevatedButton.styleFrom(
             backgroundColor:
                 AppTheme.purple.withAlpha(30), // Color del fondo del botón
             foregroundColor: Colors.white, // Color del texto del botón
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.zero, // Bordes cuadrados
               side: BorderSide(
-                  color: AppTheme.purple.withAlpha(30),
-                  width: 1.0), // Borde blanco
+                color: AppTheme.purple.withAlpha(30),
+              ), // Borde blanco
             ),
           ),
           onPressed: () {
@@ -95,14 +95,16 @@ Estadísticas y Organización: Recopilamos estas inscripciones preliminares para
             backgroundColor: AppTheme.purple, // Color del fondo del botón
             foregroundColor: Colors.black, // Color del texto del botón
             shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.zero, // Bordes cuadrados
-              side: BorderSide(color: Colors.black, width: 1.0), // Borde blanco
+              side: BorderSide(), // Borde blanco
             ),
           ),
           onPressed: () {
             Navigator.of(context).pop();
-            scrollController.animateTo(size.height * 3,
-                duration: const Duration(seconds: 1), curve: Curves.linear);
+            scrollController.animateTo(
+              size.height * 3,
+              duration: const Duration(seconds: 1),
+              curve: Curves.linear,
+            );
           },
           child: const Text(
             'Confirm',

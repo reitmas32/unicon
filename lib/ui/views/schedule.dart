@@ -6,19 +6,20 @@ import 'package:unicon/domain/models/talk.dart';
 import 'package:unicon/domain/providers/talks.dart';
 import 'package:unicon/ui/organism/speakers_carrusel.dart';
 
+///
 class Schedule extends StatelessWidget {
+  ///
   const Schedule({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
+      children: <Widget>[
         Expanded(
-          flex: 1,
           child: Column(
-            children: [
+            children: <Widget>[
               Text(
-                "Our exhibitors",
+                'Our exhibitors',
                 style: GoogleFonts.jetBrainsMono(
                   fontSize: 35,
                   fontWeight: FontWeight.bold,
@@ -29,11 +30,10 @@ class Schedule extends StatelessWidget {
           ),
         ),
         Expanded(
-          flex: 1,
           child: Column(
-            children: [
+            children: <Widget>[
               Text(
-                "Schedule",
+                'Schedule',
                 style: GoogleFonts.jetBrainsMono(
                   fontSize: 35,
                   fontWeight: FontWeight.bold,
@@ -42,7 +42,7 @@ class Schedule extends StatelessWidget {
               const SizedBox(
                 height: 25,
               ),
-              const ScheduleCarrusel()
+              const ScheduleCarrusel(),
             ],
           ),
         ),
@@ -51,7 +51,9 @@ class Schedule extends StatelessWidget {
   }
 }
 
+///
 class ScheduleCarrusel extends ConsumerStatefulWidget {
+  ///
   const ScheduleCarrusel({super.key});
 
   @override
@@ -63,11 +65,11 @@ class _ScheduleCarruselState extends ConsumerState<ScheduleCarrusel> {
 
   @override
   Widget build(BuildContext context) {
-    final exhibitors = ref.watch(talksProvider);
-    final size = MediaQuery.of(context).size;
+    final List<TalkModel> exhibitors = ref.watch(talksProvider);
+    final Size size = MediaQuery.of(context).size;
 
     return Row(
-      children: [
+      children: <Widget>[
         Expanded(
           flex: 5,
           child: SizedBox(
@@ -76,46 +78,29 @@ class _ScheduleCarruselState extends ConsumerState<ScheduleCarrusel> {
             child: FlutterCarousel(
               items: exhibitors
                   .map(
-                    (e) => TalkCard(talk: e),
+                    (TalkModel e) => TalkCard(talk: e),
                   )
                   .toList(),
               options: CarouselOptions(
                 height: size.height / 4,
                 aspectRatio: 16 / 9,
-
                 viewportFraction: 0.4,
-                initialPage: 0,
-                enableInfiniteScroll: false,
-                reverse: false,
-                autoPlay: false,
                 autoPlayInterval: const Duration(seconds: 2),
                 autoPlayAnimationDuration: const Duration(milliseconds: 800),
                 autoPlayCurve: Curves.linear,
-                enlargeCenterPage: false,
                 controller: controller,
-                //onPageChanged: callbackFunction,
-                pageSnapping: true,
-                scrollDirection: Axis.horizontal,
-                pauseAutoPlayOnTouch: true,
-                pauseAutoPlayOnManualNavigate: true,
-                pauseAutoPlayInFiniteScroll: false,
-                enlargeStrategy: CenterPageEnlargeStrategy.scale,
-                disableCenter: false,
-                showIndicator: true,
-                //floatingIndicator = true,
-                slideIndicator: const CircularSlideIndicator(),
               ),
             ),
           ),
         ),
         Expanded(
-          flex: 1,
           child: Center(
             child: IconButton(
               onPressed: () {
                 setState(() {
                   controller.nextPage(
-                      duration: const Duration(milliseconds: 200));
+                    duration: const Duration(milliseconds: 200),
+                  );
                 });
               },
               icon: const Icon(
@@ -130,14 +115,17 @@ class _ScheduleCarruselState extends ConsumerState<ScheduleCarrusel> {
   }
 }
 
+///
 class TalkCard extends StatelessWidget {
+  ///
   const TalkCard({super.key, required this.talk});
 
+  ///
   final TalkModel talk;
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    final Size size = MediaQuery.of(context).size;
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 60),
@@ -149,7 +137,7 @@ class TalkCard extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+          children: <Widget>[
             Text(
               talk.start,
               style: GoogleFonts.jetBrainsMono(

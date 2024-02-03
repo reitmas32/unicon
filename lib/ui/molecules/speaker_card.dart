@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:unicon/domain/models/speaker.dart';
 
+/// Speaker Card Widget
 class SpeakerCard extends StatelessWidget {
+  /// Contructor
   const SpeakerCard({super.key, required this.speaker});
 
+  /// Model
   final SpeakerModel speaker;
 
   @override
@@ -13,13 +16,12 @@ class SpeakerCard extends StatelessWidget {
       width: 800,
       height: 200,
       child: Stack(
-        children: [
+        children: <Widget>[
           //color: Color(0xD45C182A),
           //color: Color(0x28828282)
           Row(
-            children: [
+            children: <Widget>[
               Expanded(
-                flex: 1,
                 child: Container(
                   color: const Color(0xD45C182A),
                 ),
@@ -34,7 +36,7 @@ class SpeakerCard extends StatelessWidget {
           ),
           Center(
             child: Row(
-              children: [
+              children: <Widget>[
                 const SizedBox(
                   width: 100,
                 ),
@@ -51,7 +53,7 @@ class SpeakerCard extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
+                      children: <Widget>[
                         Text(
                           speaker.name,
                           style: GoogleFonts.jetBrainsMono(
@@ -69,28 +71,30 @@ class SpeakerCard extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: speaker.tags
-                              .map((e) => Container(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 8,
-                                      vertical: 2,
+                              .map(
+                                (String e) => Container(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 8,
+                                    vertical: 2,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: Colors.black,
+                                    borderRadius: BorderRadius.circular(
+                                      20,
                                     ),
-                                    decoration: BoxDecoration(
-                                      color: Colors.black,
-                                      borderRadius: BorderRadius.circular(
-                                        20,
-                                      ),
-                                    ),
-                                    child: Text(e),
-                                  ))
+                                  ),
+                                  child: Text(e),
+                                ),
+                              )
                               .toList(),
-                        )
+                        ),
                       ],
                     ),
                   ),
-                )
+                ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );

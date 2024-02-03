@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+/// Button Auth
 class AuthButton extends StatelessWidget {
+  ///  Contructor
   const AuthButton({super.key, required this.label, required this.onPress});
 
+  /// lable of button
   final String label;
+
+  /// Callback of Button
   final VoidCallback onPress;
 
   @override

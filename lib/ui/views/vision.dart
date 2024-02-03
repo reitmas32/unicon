@@ -1,23 +1,27 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:unicon/domain/models/our.dart';
 import 'package:unicon/domain/providers/areas.dart';
 import 'package:unicon/domain/providers/our.dart';
 import 'package:unicon/ui/molecules/our.dart';
 
+///
 class VisionSection extends ConsumerWidget {
+  ///
   const VisionSection({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final ours = ref.watch(oursProvider);
-    final areas = ref.watch(areasProvider);
-    final size = MediaQuery.of(context).size;
+    final List<OurModel> ours = ref.watch(oursProvider);
+    final List<String> areas = ref.watch(areasProvider);
+    final Size size = MediaQuery.of(context).size;
     return SizedBox(
       height: size.height,
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        children: [
+        children: <Widget>[
           Padding(
             padding: size.aspectRatio > 1.5
                 ? const EdgeInsets.symmetric(horizontal: 100)
@@ -29,7 +33,7 @@ class VisionSection extends ConsumerWidget {
                 alignment: WrapAlignment.center,
                 children: ours
                     .map(
-                      (e) => OurWidget(
+                      (OurModel e) => OurWidget(
                         ourModel: e,
                       ),
                     )
@@ -49,12 +53,10 @@ class VisionSection extends ConsumerWidget {
                     const EdgeInsets.symmetric(horizontal: 100, vertical: 50),
                 child: Center(
                   child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
+                    children: <Widget>[
                       Text(
-                        "Areas",
+                        'Areas',
                         style: GoogleFonts.jetBrainsMono(
                           fontSize: 25,
                           fontWeight: FontWeight.bold,
@@ -70,7 +72,7 @@ class VisionSection extends ConsumerWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: areas
                               .map(
-                                (e) => AreaWidget(
+                                (String e) => AreaWidget(
                                   lable: e,
                                 ),
                               )
@@ -81,19 +83,22 @@ class VisionSection extends ConsumerWidget {
                   ),
                 ),
               ),
-            )
+            ),
         ],
       ),
     );
   }
 }
 
+///
 class AreaWidget extends StatefulWidget {
+  ///
   const AreaWidget({
     super.key,
     required this.lable,
   });
 
+  ///
   final String lable;
 
   @override
@@ -106,34 +111,35 @@ class _AreaWidgetState extends State<AreaWidget> {
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
-      child: TweenAnimationBuilder(
-          duration: const Duration(milliseconds: 150),
-          tween: Tween<double>(begin: 0, end: isHover ? -10 : 0),
-          builder: (BuildContext context, double value, Widget? child) {
-            return Transform.translate(
-              offset: Offset(value, 0),
-              child: AnimatedDefaultTextStyle(
-                duration: const Duration(milliseconds: 150),
-                style: GoogleFonts.jetBrainsMono(
-                  fontSize: isHover ? 25 : 20,
-                  fontWeight: isHover ? FontWeight.bold : FontWeight.normal,
-                  color: isHover ? Colors.white : Colors.grey,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: Text(
-                    widget.lable,
-                  ),
+      child: TweenAnimationBuilder<double>(
+        duration: const Duration(milliseconds: 150),
+        tween: Tween<double>(begin: 0, end: isHover ? -10 : 0),
+        builder: (BuildContext context, double value, Widget? child) {
+          return Transform.translate(
+            offset: Offset(value, 0),
+            child: AnimatedDefaultTextStyle(
+              duration: const Duration(milliseconds: 150),
+              style: GoogleFonts.jetBrainsMono(
+                fontSize: isHover ? 25 : 20,
+                fontWeight: isHover ? FontWeight.bold : FontWeight.normal,
+                color: isHover ? Colors.white : Colors.grey,
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: Text(
+                  widget.lable,
                 ),
               ),
-            );
-          }),
-      onEnter: (event) {
+            ),
+          );
+        },
+      ),
+      onEnter: (PointerEnterEvent event) {
         setState(() {
           isHover = true;
         });
       },
-      onExit: (event) {
+      onExit: (PointerExitEvent event) {
         setState(() {
           isHover = false;
         });

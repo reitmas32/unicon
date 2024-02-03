@@ -5,17 +5,19 @@ import 'package:unicon/ui/views/home_body.dart';
 import 'package:unicon/ui/views/pre_register.dart';
 import 'package:unicon/ui/views/vision.dart';
 
+///
 class SectionCollection extends StateNotifier<List<SectionModel<Widget>>> {
+  ///
   SectionCollection()
       : super(
-          [
+          <SectionModel<Widget>>[
             SectionModel<HomeBody>(
-              name: "Home",
+              name: 'Home',
               content: const HomeBody(),
               active: true,
             ),
             SectionModel<VisionSection>(
-              name: "Vision",
+              name: 'Vision',
               content: const VisionSection(),
             ),
             //SectionModel<Schedule>(
@@ -23,42 +25,49 @@ class SectionCollection extends StateNotifier<List<SectionModel<Widget>>> {
             //  content: const Schedule(),
             //),
             SectionModel<PreRegisterView>(
-              name: "Join Us",
+              name: 'Join Us',
               content: const PreRegisterView(),
             ),
           ],
         );
 
+  /// Func by activate section
   Future<bool> activateSection(int index) {
     state[index].active = true;
 
-    state = [...state];
+    state = <SectionModel<Widget>>[...state];
 
-    return Future(() => true);
+    return Future<bool>(() => true);
   }
 
+  /// Func by go to Next section
   Future<int> goToNext() {
     int index = 0;
-    for (SectionModel<Widget> s in state) {
+    for (final SectionModel<Widget> s in state) {
       if (s.active) {
         break;
       }
       index += 0;
     }
-    return Future(() => index);
+    return Future<int>(() => index);
   }
 
+  /// Func by reset sections
   Future<bool> reset() {
-    for (var e in state) {
+    for (final SectionModel<Widget> e in state) {
       e.active = false;
     }
-    state = [...state];
+    state = <SectionModel<Widget>>[...state];
 
-    return Future(() => true);
+    return Future<bool>(() => true);
   }
 }
 
-final sectionsProvider =
-    StateNotifierProvider<SectionCollection, List<SectionModel>>((ref) {
+/// Provider of Sections
+final StateNotifierProvider<SectionCollection, List<SectionModel<Widget>>>
+    sectionsProvider =
+    StateNotifierProvider<SectionCollection, List<SectionModel<Widget>>>((
+  StateNotifierProviderRef<SectionCollection, List<SectionModel<Widget>>> ref,
+) {
   return SectionCollection();
 });

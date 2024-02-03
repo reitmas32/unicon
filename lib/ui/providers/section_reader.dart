@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final sectionsReaderProvider = StateProvider<ScrollController>((ref) {
+///
+final StateProvider<ScrollController> sectionsReaderProvider =
+    StateProvider<ScrollController>((
+  StateProviderRef<ScrollController> ref,
+) {
   return ScrollController();
 });

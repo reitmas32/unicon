@@ -4,16 +4,18 @@ import 'package:unicon/domain/models/simple_button.dart';
 import 'package:unicon/ui/atoms/auth_button.dart';
 import 'package:unicon/ui/organism/pre_register_dialog.dart';
 
+/// Layer of PreRegister of Buttons
 class PreRegisterLayer extends StatelessWidget {
+  /// Constructor
   const PreRegisterLayer({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    final buttons = [
+    final Size size = MediaQuery.of(context).size;
+    final List<SimpleButtonModel> buttons = <SimpleButtonModel>[
       SimpleButtonModel(
-        lable: "Pre Register",
-        onPressed: () => preRegisterDialog(context),
+        label: 'Pre Register',
+        onPressed: () => _preRegisterDialog(context),
       ),
     ];
 
@@ -25,29 +27,31 @@ class PreRegisterLayer extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: buttons
-              .map((e) => [
-                    AuthButton(
-                      label: e.lable,
-                      onPress: e.onPressed,
-                    ),
-                    if (e != buttons.last)
-                      Text(
-                        " | ",
-                        style: GoogleFonts.jetBrainsMono(
-                          fontSize: 27,
-                          fontWeight: FontWeight.w100,
-                          color: Colors.white,
-                        ),
+              .map(
+                (SimpleButtonModel e) => <StatelessWidget>[
+                  AuthButton(
+                    label: e.label,
+                    onPress: e.onPressed,
+                  ),
+                  if (e != buttons.last)
+                    Text(
+                      ' | ',
+                      style: GoogleFonts.jetBrainsMono(
+                        fontSize: 27,
+                        fontWeight: FontWeight.w100,
+                        color: Colors.white,
                       ),
-                  ])
-              .expand((element) => element)
+                    ),
+                ],
+              )
+              .expand((List<StatelessWidget> element) => element)
               .toList(),
         ),
       ),
     );
   }
 
-  void preRegisterDialog(BuildContext context) => showDialog(
+  void _preRegisterDialog(BuildContext context) => showDialog(
         context: context,
         builder: (BuildContext context) {
           return const PreRegisterDialog();
