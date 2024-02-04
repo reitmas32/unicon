@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 
+/// Background Widget
 class BackGroundWidget extends StatelessWidget {
+  /// Contructor
   const BackGroundWidget({
     super.key,
     required this.child,
   });
 
+  /// The [child] contained by the Background.
   final Widget child;
 
   @override
   Widget build(BuildContext context) {
     return Stack(
-      children: [
+      children: <Widget>[
         Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: NetworkImage(
-                  'https://raw.githubusercontent.com/reitmas32/unicon/main/assets/background.png'),
+              image: AssetImage('assets/background.gif'),
               fit: BoxFit.cover, // Para cubrir toda la pantalla
             ),
           ),
