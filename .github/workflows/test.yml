@@ -1,0 +1,18 @@
+# El nombre del flujo de trabajo
+name: first-test
+
+# El evento que desencadena el flujo de trabajo
+on:
+  push:
+    branches:
+      - main
+      - development
+
+jobs:
+  analysis:
+    # El nombre del trabajo
+    name: example
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo Folder Contents
+        run: echo $(ls)
