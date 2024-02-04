@@ -1,54 +1,73 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:unicon/domain/models/section_model.dart';
-import 'package:unicon/ui/organism/home_body.dart';
-import 'package:unicon/ui/organism/vision.dart';
+import 'package:unicon/ui/views/home_body.dart';
+import 'package:unicon/ui/views/pre_register.dart';
+import 'package:unicon/ui/views/vision.dart';
 
+///
 class SectionCollection extends StateNotifier<List<SectionModel<Widget>>> {
+  ///
   SectionCollection()
       : super(
-          [
+          <SectionModel<Widget>>[
             SectionModel<HomeBody>(
-              name: "Home",
+              name: 'Home',
               content: const HomeBody(),
               active: true,
             ),
             SectionModel<VisionSection>(
-              name: "Vision",
+              name: 'Vision',
               content: const VisionSection(),
             ),
-            SectionModel<HomeBody>(
-              name: "Exibitor",
-              content: const HomeBody(),
+            //SectionModel<Schedule>(
+            //  name: "Exibitor",
+            //  content: const Schedule(),
+            //),
+            SectionModel<PreRegisterView>(
+              name: 'Join Us',
+              content: const PreRegisterView(),
             ),
-            SectionModel<HomeBody>(
-              name: "Join Us",
-              content: const HomeBody(),
-            ),
-            SectionModel<HomeBody>(
-                name: "Become Speaker", content: const HomeBody()),
           ],
         );
 
+  /// Func by activate section
   Future<bool> activateSection(int index) {
     state[index].active = true;
 
-    state = [...state];
+    state = <SectionModel<Widget>>[...state];
 
-    return Future(() => true);
+    return Future<bool>(() => true);
   }
 
+  /// Func by go to Next section
+  Future<int> goToNext() {
+    int index = 0;
+    for (final SectionModel<Widget> s in state) {
+      if (s.active) {
+        break;
+      }
+      index += 0;
+    }
+    return Future<int>(() => index);
+  }
+
+  /// Func by reset sections
   Future<bool> reset() {
-    for (var e in state) {
+    for (final SectionModel<Widget> e in state) {
       e.active = false;
     }
-    state = [...state];
+    state = <SectionModel<Widget>>[...state];
 
-    return Future(() => true);
+    return Future<bool>(() => true);
   }
 }
 
-final sectionsProvider =
-    StateNotifierProvider<SectionCollection, List<SectionModel>>((ref) {
+/// Provider of Sections
+final StateNotifierProvider<SectionCollection, List<SectionModel<Widget>>>
+    sectionsProvider =
+    StateNotifierProvider<SectionCollection, List<SectionModel<Widget>>>((
+  StateNotifierProviderRef<SectionCollection, List<SectionModel<Widget>>> ref,
+) {
   return SectionCollection();
 });

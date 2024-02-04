@@ -1,4 +1,6 @@
+/// /// Represents a section model with a name, content, id and active state
 class SectionModel<T> {
+  /// Contructor
   SectionModel({
     required this.name,
     required this.content,
@@ -8,10 +10,18 @@ class SectionModel<T> {
     SectionModel._id += 1;
   }
 
-  static int _id = 0;
+  /// The name of the section
+  final String name;
 
-  String name;
-  T content;
-  late int id;
-  bool active;
+  /// The content of the section
+  final T content;
+
+  /// Whether this section is currently active/selected
+  late bool active;
+
+  /// A unique id for this section
+  late final int id;
+
+  /// Incrementing id for each section
+  static int _id = 0;
 }

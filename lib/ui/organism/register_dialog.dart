@@ -4,29 +4,31 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:unicon/ui/atoms/google_sigin_button.dart';
 import 'package:unicon/ui/providers/theme.dart';
 
+/// RegisterDialog
 class RegisterDialog extends StatelessWidget {
+  /// Constructor
   const RegisterDialog({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    final Size size = MediaQuery.of(context).size;
     return AlertDialog(
       content: SizedBox(
         width: size.width / 4.5,
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          children: [
+          children: <Widget>[
             SvgPicture.asset(
-              "assets/unicon.svg",
+              'assets/unicon.svg',
               height: 100,
             ),
             const SizedBox(
               height: 50,
             ),
             Text(
-              "Register",
+              'Register',
               style: GoogleFonts.jetBrainsMono(
                 color: Colors.white,
                 fontSize: 25,
@@ -38,9 +40,9 @@ class RegisterDialog extends StatelessWidget {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+              children: <Widget>[
                 Text(
-                  "You are already a member ",
+                  'You are already a member ',
                   style: GoogleFonts.jetBrainsMono(
                     color: Colors.white,
                     fontSize: 15,
@@ -48,7 +50,7 @@ class RegisterDialog extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "Log in",
+                  'Log in',
                   style: GoogleFonts.jetBrainsMono(
                     color: AppTheme.darkPurple,
                     fontSize: 20,
@@ -61,13 +63,12 @@ class RegisterDialog extends StatelessWidget {
               height: 50,
             ),
             Column(
-              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: Text(
-                    "Full Name",
+                    'Full Name',
                     style: GoogleFonts.jetBrainsMono(
                       color: Colors.white,
                       fontSize: 15,
@@ -83,7 +84,6 @@ class RegisterDialog extends StatelessWidget {
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Colors.white,
-                          width: 1.0,
                         ),
                         borderRadius: BorderRadius
                             .zero, // O cualquier otro radio que desees
@@ -91,7 +91,6 @@ class RegisterDialog extends StatelessWidget {
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Colors.white,
-                          width: 1.0,
                         ),
                       ),
                     ),
@@ -100,7 +99,7 @@ class RegisterDialog extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: Text(
-                    "Email",
+                    'Email',
                     style: GoogleFonts.jetBrainsMono(
                       color: Colors.white,
                       fontSize: 15,
@@ -116,7 +115,6 @@ class RegisterDialog extends StatelessWidget {
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Colors.white,
-                          width: 1.0,
                         ),
                         borderRadius: BorderRadius
                             .zero, // O cualquier otro radio que desees
@@ -124,7 +122,6 @@ class RegisterDialog extends StatelessWidget {
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Colors.white,
-                          width: 1.0,
                         ),
                       ),
                     ),
@@ -133,7 +130,7 @@ class RegisterDialog extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: Text(
-                    "Password",
+                    'Password',
                     style: GoogleFonts.jetBrainsMono(
                       color: Colors.white,
                       fontSize: 15,
@@ -149,7 +146,6 @@ class RegisterDialog extends StatelessWidget {
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Colors.white,
-                          width: 1.0,
                         ),
                         borderRadius: BorderRadius
                             .zero, // O cualquier otro radio que desees
@@ -157,7 +153,6 @@ class RegisterDialog extends StatelessWidget {
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Colors.white,
-                          width: 1.0,
                         ),
                       ),
                     ),
@@ -168,7 +163,7 @@ class RegisterDialog extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 30.0),
               child: Row(
-                children: [
+                children: <Widget>[
                   Expanded(
                     child: Divider(
                       color: Colors.white,
@@ -201,24 +196,21 @@ class RegisterDialog extends StatelessWidget {
         ),
       ),
       shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.zero,
         side: BorderSide(
           color: Colors.white, // Color del borde
-          width: 1.0, // Grosor del borde
         ),
       ),
       backgroundColor: Colors.black,
-      actions: [
+      actions: <Widget>[
         TextButton(
           style: ElevatedButton.styleFrom(
             backgroundColor:
                 AppTheme.purple.withAlpha(30), // Color del fondo del botón
             foregroundColor: Colors.white, // Color del texto del botón
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.zero, // Bordes cuadrados
               side: BorderSide(
-                  color: AppTheme.purple.withAlpha(30),
-                  width: 1.0), // Borde blanco
+                color: AppTheme.purple.withAlpha(30),
+              ), // Borde blanco
             ),
           ),
           onPressed: () {
@@ -233,8 +225,7 @@ class RegisterDialog extends StatelessWidget {
             backgroundColor: AppTheme.purple, // Color del fondo del botón
             foregroundColor: Colors.black, // Color del texto del botón
             shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.zero, // Bordes cuadrados
-              side: BorderSide(color: Colors.black, width: 1.0), // Borde blanco
+              side: BorderSide(), // Borde blanco
             ),
           ),
           onPressed: () {

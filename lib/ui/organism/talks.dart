@@ -4,25 +4,27 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:unicon/domain/models/talk.dart';
 import 'package:unicon/domain/providers/talks.dart';
 
+///
 class TalksContent extends ConsumerWidget {
+  ///
   const TalksContent({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final talks = ref.watch(talksProvider);
+    final List<TalkModel> talks = ref.watch(talksProvider);
 
     return SizedBox(
       child: Column(
-        children: [
+        children: <Widget>[
           const SizedBox(
             height: 100,
           ),
           SizedBox(
             width: 600,
             child: Column(
-              children: [
+              children: <Widget>[
                 SelectableText(
-                  "Agenda 2024",
+                  'Agenda 2024',
                   style: GoogleFonts.jetBrainsMono(
                     fontSize: 50,
                     fontWeight: FontWeight.bold,
@@ -32,7 +34,7 @@ class TalksContent extends ConsumerWidget {
                   height: 30,
                 ),
                 SelectableText(
-                  "Todas las Charlas estar disponibles despues del evento",
+                  'Todas las Charlas estar disponibles despues del evento',
                   style: GoogleFonts.jetBrainsMono(
                     fontSize: 22,
                   ),
@@ -45,28 +47,31 @@ class TalksContent extends ConsumerWidget {
             height: 50,
           ),
           Column(
-            children: talks.map((talk) {
+            children: talks.map((TalkModel talk) {
               return TalkCard(talk: talk);
             }).toList(),
-          )
+          ),
         ],
       ),
     );
   }
 }
 
+///
 class TalkCard extends StatelessWidget {
+  ///
   const TalkCard({
     super.key,
     required this.talk,
   });
 
+  /// Model
   final TalkModel talk;
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    final widthContent = MediaQuery.of(context).size.aspectRatio > 0.7
+    final Size size = MediaQuery.of(context).size;
+    final double widthContent = MediaQuery.of(context).size.aspectRatio > 0.7
         ? size.height * 0.7
         : size.width;
     return Container(
@@ -74,10 +79,10 @@ class TalkCard extends StatelessWidget {
       width: widthContent,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+        children: <Widget>[
           if (widthContent < size.width)
             Text(
-              "${talk.start} - ${talk.end}",
+              '${talk.start} - ${talk.end}',
               style: GoogleFonts.jetBrainsMono(
                 fontSize: 15,
               ),
@@ -94,15 +99,14 @@ class TalkCard extends StatelessWidget {
           ),
           Container(
             constraints: BoxConstraints(
-                maxWidth:
-                    widthContent - (widthContent < size.width ? 180 : 50)),
+              maxWidth: widthContent - (widthContent < size.width ? 180 : 50),
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
+              children: <Widget>[
                 if (widthContent >= size.width)
                   Text(
-                    "${talk.start} - ${talk.end}",
+                    '${talk.start} - ${talk.end}',
                     style: GoogleFonts.jetBrainsMono(
                       fontSize: 15,
                     ),
@@ -129,7 +133,7 @@ class TalkCard extends StatelessWidget {
                   height: 20,
                 ),
                 Row(
-                  children: [
+                  children: <Widget>[
                     SizedBox(
                       height: 85,
                       width: 85,
@@ -140,12 +144,12 @@ class TalkCard extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 15,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
+                      children: <Widget>[
                         Text(
                           talk.speaker.name,
                           style: GoogleFonts.jetBrainsMono(
@@ -160,7 +164,7 @@ class TalkCard extends StatelessWidget {
                           talk.speaker.job,
                         ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               ],

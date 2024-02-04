@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+/// GoogleButton Authentication
 class GoogleSignInButton extends StatelessWidget {
+  /// Constructor
   const GoogleSignInButton({super.key});
 
   @override
@@ -10,8 +12,7 @@ class GoogleSignInButton extends StatelessWidget {
         backgroundColor: Colors.black, // Color del fondo del botón
         foregroundColor: Colors.white, // Color del texto del botón
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.zero, // Bordes cuadrados
-          side: BorderSide(color: Colors.white, width: 1.0), // Borde blanco
+          side: BorderSide(color: Colors.white), // Borde blanco
         ),
       ),
       onPressed: () {
@@ -20,7 +21,7 @@ class GoogleSignInButton extends StatelessWidget {
       child: const Padding(
         padding: EdgeInsets.all(12.0),
         child: Stack(
-          children: [
+          children: <Widget>[
             Positioned(
               left: 0,
               child: GoogleLogo(
@@ -35,39 +36,44 @@ class GoogleSignInButton extends StatelessWidget {
   }
 }
 
+/// GoogleLogo
 class GoogleLogo extends StatelessWidget {
+  /// Contructor
+  const GoogleLogo({super.key, this.size = 300});
+
+  /// Size of logo
   final double size;
-  const GoogleLogo({Key? key, this.size = 300}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
       color: Colors.transparent,
-      child: CustomPaint(painter: GoogleLogoPainter(), size: Size.square(size)),
+      child:
+          CustomPaint(painter: _GoogleLogoPainter(), size: Size.square(size)),
     );
   }
 }
 
-class GoogleLogoPainter extends CustomPainter {
+class _GoogleLogoPainter extends CustomPainter {
   @override
   bool shouldRepaint(_) => true;
 
   @override
   void paint(Canvas canvas, Size size) {
-    final length = size.width;
-    final verticalOffset = (size.height / 2) - (length / 2);
-    final bounds = Offset(0, verticalOffset) & Size.square(length);
-    final center = bounds.center;
-    final arcThickness = size.width / 4.5;
+    final double length = size.width;
+    final double verticalOffset = (size.height / 2) - (length / 2);
+    final Rect bounds = Offset(0, verticalOffset) & Size.square(length);
+    final Offset center = bounds.center;
+    final double arcThickness = size.width / 4.5;
 
-    final paint = Paint()
+    final Paint paint = Paint()
       ..style = PaintingStyle.stroke
       ..strokeWidth = arcThickness;
 
     void drawArc(double startAngle, double sweepAngle, Color color) {
-      final _paint = paint..color = color;
-      canvas.drawArc(bounds, startAngle, sweepAngle, false, _paint);
+      final Paint paint0 = paint..color = color;
+      canvas.drawArc(bounds, startAngle, sweepAngle, false, paint0);
     }
 
     drawArc(3.5, 1.9, Colors.red);

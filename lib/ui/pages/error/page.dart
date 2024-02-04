@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:unicon/ui/organism/background.dart';
 
+///
 class ErrorPage extends StatelessWidget {
+  ///
   const ErrorPage({super.key});
 
   @override
@@ -12,7 +14,7 @@ class ErrorPage extends StatelessWidget {
         child: Center(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+            children: <Widget>[
               SelectableText(
                 '404',
                 style: GoogleFonts.jetBrainsMono(
