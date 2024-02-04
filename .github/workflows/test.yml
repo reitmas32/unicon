@@ -7,12 +7,22 @@ on:
     branches:
       - main
       - development
+  pull_request:
+    branches:
+        - main
+        - development
 
 jobs:
   analysis:
     # El nombre del trabajo
-    name: example
+    name: Install Flutter
     runs-on: ubuntu-latest
     steps:
-      - name: Echo Folder Contents
-        run: echo $(ls)
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.16.5'
+          channel: 'stable'
+          architecture: x64
+      - name: Flutter Version
+        run: flutter --version
