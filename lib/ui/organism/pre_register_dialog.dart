@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:markdown_widget/markdown_widget.dart';
 import 'package:markdown_widget/widget/markdown.dart';
 import 'package:unicon/ui/providers/section_reader.dart';
 import 'package:unicon/ui/providers/theme.dart';
@@ -42,16 +43,16 @@ Estadísticas y Organización: Recopilamos estas inscripciones preliminares para
           children: <Widget>[
             SvgPicture.asset(
               'assets/unicon.svg',
-              height: 100,
+              height: size.height < 800 ? 70 : 100,
             ),
-            const SizedBox(
-              height: 50,
+            SizedBox(
+              height: size.height < 800 ? 20 : 50,
             ),
             Text(
               'PreRegister',
               style: GoogleFonts.jetBrainsMono(
                 color: Colors.white,
-                fontSize: 25,
+                fontSize: size.height < 800 ? 15 : 25,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -60,7 +61,10 @@ Estadísticas y Organización: Recopilamos estas inscripciones preliminares para
             ),
             SizedBox(
               height: size.height / 2,
-              child: MarkdownWidget(data: text),
+              child: MarkdownWidget(
+                data: text,
+                config: MarkdownConfig(),
+              ),
             ),
           ],
         ),

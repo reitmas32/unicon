@@ -18,7 +18,7 @@ class VisionSection extends ConsumerWidget {
     final List<String> areas = ref.watch(areasProvider);
     final Size size = MediaQuery.of(context).size;
     return SizedBox(
-      height: size.height,
+      //height: size.height,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
@@ -27,7 +27,7 @@ class VisionSection extends ConsumerWidget {
                 ? const EdgeInsets.symmetric(horizontal: 100)
                 : const EdgeInsets.symmetric(horizontal: 10),
             child: SizedBox(
-              height: size.aspectRatio > 1.5 ? size.height * 0.23 : size.height,
+              //height: size.aspectRatio > 1.5 ? size.height * 0.23 : size.height,
               child: Wrap(
                 crossAxisAlignment: WrapCrossAlignment.center,
                 alignment: WrapAlignment.center,

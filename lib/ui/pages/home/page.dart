@@ -24,30 +24,32 @@ class _HomePageState extends ConsumerState<HomePage> {
     final List<SectionModel<Widget>> sections = ref.watch(sectionsProvider);
     final ScrollController scrollController = ref.watch(sectionsReaderProvider);
     final Size size = MediaQuery.of(context).size;
-    return Scaffold(
-      body: BackGroundWidget(
-        child: Stack(
-          children: <Widget>[
-            const PreRegisterLayer(),
-            Column(
-              children: <Widget>[
-                SizedBox(
-                  height: size.height * 0.13,
-                ),
-                Expanded(
-                  child: SectionScroll(
-                    controller: scrollController,
-                    children: <Widget>[
-                      ...sections
-                          .map((SectionModel<Widget> e) => e.content)
-                          .toList(),
-                    ],
+    return SafeArea(
+      child: Scaffold(
+        body: BackGroundWidget(
+          child: Stack(
+            children: <Widget>[
+              const PreRegisterLayer(),
+              Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: size.height * 0.13,
                   ),
-                ),
-              ],
-            ),
-            //const AuthLayer(),
-          ],
+                  Expanded(
+                    child: SectionScroll(
+                      controller: scrollController,
+                      children: <Widget>[
+                        ...sections
+                            .map((SectionModel<Widget> e) => e.content)
+                            .toList(),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              //const AuthLayer(),
+            ],
+          ),
         ),
       ),
     );

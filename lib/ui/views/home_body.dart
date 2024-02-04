@@ -22,10 +22,6 @@ class _HomeBodyState extends ConsumerState<HomeBody> {
     final double fontSize =
         size.height > 1200 ? size.height / 70 : size.height / 50;
 
-    final double widthContent = MediaQuery.of(context).size.aspectRatio > 0.7
-        ? size.height * 0.8
-        : size.width;
-
     final double fontSizeCountDown =
         MediaQuery.of(context).size.aspectRatio > 0.7 ? 75 : 25;
 
@@ -34,49 +30,40 @@ class _HomeBodyState extends ConsumerState<HomeBody> {
 
     final DateTime remainingTime = DateTime(2024, 4, 20);
 
-    return SizedBox(
-      height: size.height * 0.87,
-      child: Center(
-        child: SizedBox(
-          width: widthContent,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              SvgPicture.network(
-                'https://raw.githubusercontent.com/reitmas32/unicon/1129ea9afbb29c0a299c8684a345b47202bc7eaa/assets/unicon.svg',
-                height: size.height / 4,
-              ),
-              SizedBox(
-                width: widthContent - 50,
-                child: SelectableText(
-                  '''
-Networking with Passion: Collaborate with Tech Enthusiasts and Innovators''',
-                  style: GoogleFonts.jetBrainsMono(fontSize: fontSize),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              const SizedBox(
-                height: 50,
-              ),
-              TimerCountdown(
-                endTime: remainingTime,
-                timeTextStyle: GoogleFonts.jetBrainsMono(
-                  fontSize: fontSizeCountDown,
-                ),
-                colonsTextStyle: GoogleFonts.jetBrainsMono(
-                  fontSize: fontSizeCountDown,
-                ),
-                descriptionTextStyle: GoogleFonts.jetBrainsMono(
-                  fontSize: descriptionfontSizeCountDown,
-                ),
-                daysDescription: 'DÍAS',
-                hoursDescription: 'HRS',
-                minutesDescription: 'MIN',
-                secondsDescription: 'SEC',
-              ),
-            ],
+    return Center(
+      child: Column(
+        //mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          SvgPicture.network(
+            'https://raw.githubusercontent.com/reitmas32/unicon/1129ea9afbb29c0a299c8684a345b47202bc7eaa/assets/unicon.svg',
+            //height: size.height / 4,
           ),
-        ),
+          SelectableText(
+            '''
+      Networking with Passion: Collaborate with Tech Enthusiasts and Innovators''',
+            style: GoogleFonts.jetBrainsMono(fontSize: fontSize),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(
+            height: 50,
+          ),
+          TimerCountdown(
+            endTime: remainingTime,
+            timeTextStyle: GoogleFonts.jetBrainsMono(
+              fontSize: fontSizeCountDown,
+            ),
+            colonsTextStyle: GoogleFonts.jetBrainsMono(
+              fontSize: fontSizeCountDown,
+            ),
+            descriptionTextStyle: GoogleFonts.jetBrainsMono(
+              fontSize: descriptionfontSizeCountDown,
+            ),
+            daysDescription: 'DÍAS',
+            hoursDescription: 'HRS',
+            minutesDescription: 'MIN',
+            secondsDescription: 'SEC',
+          ),
+        ],
       ),
     );
   }

@@ -203,9 +203,6 @@ class _PreRegisterViewState extends ConsumerState<PreRegisterView> {
               ],
             ),
           ),
-          const SizedBox(
-            height: 200,
-          ),
         ],
       ),
     );
@@ -252,27 +249,29 @@ class CustonTextField extends StatelessWidget {
                 lable,
                 style: GoogleFonts.jetBrainsMono(
                   color: Colors.white,
-                  fontSize: size.height > 1000 ? 20 : 15,
+                  fontSize: size.height > 800 ? 20 : 10,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: TextField(
-                controller: controller,
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.all(size.height > 1000 ? 12 : 8),
-                  focusedBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.white,
+              padding:
+                  EdgeInsets.symmetric(vertical: size.height > 800 ? 8 : 1),
+              child: SizedBox(
+                height: size.height > 800 ? 50 : 35,
+                child: TextField(
+                  controller: controller,
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.all(size.height > 1000 ? 12 : 8),
+                    focusedBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.white,
+                      ),
                     ),
-                    borderRadius:
-                        BorderRadius.zero, // O cualquier otro radio que desees
-                  ),
-                  enabledBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.white,
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),

@@ -18,6 +18,8 @@ dependencies:
   markdown_widget: ^2.3.2+3
   scrollable_positioned_list: ^0.3.8
   url_strategy: ^0.2.0
+  device_preview: ^1.1.0
+  auto_size_text: ^3.0.0
   
   flutter: 
     sdk: flutter
