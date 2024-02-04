@@ -40,13 +40,9 @@ class VisionSection extends ConsumerWidget {
               ),
             ),
           ),
-          const SizedBox(
-            height: 100,
-          ),
           if (size.aspectRatio > 1.5)
             SizedBox(
               height: size.height * 0.6,
-              width: size.width * 0.9,
               child: Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 100, vertical: 50),

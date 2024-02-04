@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:unicon/domain/models/our.dart';
@@ -26,16 +25,21 @@ class OurWidget extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            AutoSizeText(
+            Text(
               ourModel.title,
-              style: GoogleFonts.jetBrainsMono(),
+              style: GoogleFonts.jetBrainsMono(
+                fontSize: size.height > 800 ? 22 : 17,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             const SizedBox(
               height: 20,
             ),
-            AutoSizeText(
+            Text(
               ourModel.description,
-              //style: GoogleFonts.jetBrainsMono(),
+              style: GoogleFonts.jetBrainsMono(
+                fontSize: size.height > 800 ? 20 : 15,
+              ),
               textAlign: TextAlign.justify,
               maxLines: 5,
             ),

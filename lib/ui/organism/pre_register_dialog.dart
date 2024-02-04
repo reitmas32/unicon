@@ -104,7 +104,7 @@ Estadísticas y Organización: Recopilamos estas inscripciones preliminares para
           onPressed: () {
             Navigator.of(context).pop();
             scrollController.animateTo(
-              size.height * 3,
+              size.height * 2,
               duration: const Duration(seconds: 1),
               curve: Curves.linear,
             );
