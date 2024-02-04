@@ -8,7 +8,6 @@ void main() async {
   setPathUrlStrategy();
   runApp(
     DevicePreview(
-      enabled: true,
       builder: (BuildContext context) => const ProviderScope(
         child: UniConApp(),
       ),
