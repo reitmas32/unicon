@@ -34,8 +34,8 @@ class _HomeBodyState extends ConsumerState<HomeBody> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          SvgPicture.network(
-            'https://raw.githubusercontent.com/reitmas32/unicon/1129ea9afbb29c0a299c8684a345b47202bc7eaa/assets/unicon.svg',
+          SvgPicture.asset(
+            'assets/unicon.svg',
             //height: size.height / 4,
           ),
           SelectableText(

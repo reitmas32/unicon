@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# Run Dart analyze and check for errors
+if ! output=$(flutter pub run pubspec_dependency_sorter); then
+    echo "COMMIT REJECTED: Sort dependencies:"
+    echo "$sorted pub dependencies"
+    exit 1
+fi
+
 # Run Flutter analyze and check for errors
 if ! output=$(flutter analyze); then
     echo "COMMIT REJECTED: Flutter analyze found the following errors:"
