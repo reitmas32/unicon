@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:unicon/domain/core/settings.dart';
 
 /// Background Widget
 class BackGroundWidget extends StatelessWidget {
@@ -16,9 +17,9 @@ class BackGroundWidget extends StatelessWidget {
     return Stack(
       children: <Widget>[
         Container(
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/background.gif'),
+              image: AssetImage(settings.BACK_GROUND_IMG),
               fit: BoxFit.cover, // Para cubrir toda la pantalla
             ),
           ),

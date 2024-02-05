@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:unicon/domain/core/settings.dart';
 
 /// Countdown timer Widget
 class CountDownContent extends ConsumerWidget {
@@ -36,7 +37,7 @@ class CountDownContent extends ConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 SvgPicture.asset(
-                  'assets/unicon.svg',
+                  settings.UNICON_LOGO_SVG,
                   height: size.height / 4,
                 ),
                 TimerCountdown(

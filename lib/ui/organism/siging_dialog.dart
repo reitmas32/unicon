@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:unicon/domain/core/settings.dart';
 import 'package:unicon/ui/atoms/google_sigin_button.dart';
 import 'package:unicon/ui/providers/theme.dart';
 
@@ -21,7 +22,7 @@ class SigInDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             SvgPicture.asset(
-              'assets/unicon.svg',
+              settings.UNICON_LOGO_SVG,
               height: 100,
             ),
             const SizedBox(
