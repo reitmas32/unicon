@@ -1,0 +1,18 @@
+---
+import "./styles.css";
+
+interface Props {
+    title: string;
+    description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<script src="./script.js"></script>
+
+<section class="vision-item">
+
+    <div class="vision-item-title">{title}</div>
+    <div class="vision-item-description">{description}</div>
+</section>

@@ -1,0 +1,15 @@
+---
+import "./style.css";
+interface Props {
+    label: string;
+}
+
+const { label } = Astro.props;
+---
+
+<script src="./script.js"></script>
+<!-- Store the message prop as a data attribute. -->
+<astro-greet data-message={label}>
+    <a class="auth-button" href="#pre-registro">{label}</a>
+</astro-greet>
+

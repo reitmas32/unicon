@@ -1,0 +1,43 @@
+.scroll-nav {
+    position: absolute;
+    right: 30px;
+    /* Alinea el contenedor a la derecha */
+    top: 50%;
+    /* Posiciona el contenedor en el centro vertical de la página */
+
+    /* Corrige la posición vertical */
+    display: flex;
+    flex-direction: column;
+
+
+    position: fixed;
+    right: 20px;
+    border: none;
+}
+
+.scroll-nav-item {
+    width: 30px;
+    /* Ajusta el tamaño del botón según lo desees */
+    height: 30px;
+    /* Ajusta el tamaño del botón según lo desees */
+    border-radius: 50%;
+    /* Hace que el botón tenga forma circular */
+    background-color: #007bff;
+    /* Cambia el color de fondo del botón según lo desees */
+    border: none;
+    /* Quita el borde del botón */
+    outline: none;
+    /* Quita el resaltado de foco */
+    cursor: pointer;
+    /* Cambia el cursor al pasar sobre el botón */
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    background-color: #5c5c5c;
+    transition: transform 0.3s;
+}
+
+.scroll-nav-item:hover {
+    transform: scale(1.5);
+}

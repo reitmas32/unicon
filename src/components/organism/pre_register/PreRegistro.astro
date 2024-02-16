@@ -1,0 +1,75 @@
+---
+import "./styles.css";
+---
+
+<script src="./script.js"></script>
+
+<div class="preregistro" id="pre-registro">
+    <h1>PreRegistro</h1>
+    <form action="/" method="post">
+        <div class="names">
+            <ul class="text-field-custom">
+                <li>
+                    <label for="name" class="input-label">Nombre's *</label>
+                </li>
+                <div class="spacer-name"></div>
+                <li>
+                    <input
+                        class="text-field-input"
+                        type="text"
+                        id="name"
+                        name="user_name"
+                        autocomplete="off"
+                    />
+                </li>
+            </ul>
+            <ul class="text-field-custom">
+                <label for="last-name" class="input-label">Apellido's *</label>
+                <div class="spacer-name"></div>
+
+                <li>
+                    <input
+                        class="text-field-input"
+                        type="text"
+                        id="last-name"
+                        name="last-name"
+                        autocomplete="off"
+                    />
+                </li>
+            </ul>
+        </div>
+        <ul class="text-field-custom">
+            <li>
+                <label for="name" class="input-label">Email *</label>
+            </li>
+            <div class="spacer-name"></div>
+            <li>
+                <input
+                    class="text-field-input"
+                    type="email"
+                    id="email"
+                    name="email"
+                    autocomplete="off"
+                />
+            </li>
+        </ul>
+        <ul class="text-field-custom">
+            <li>
+                <label for="name" class="input-label">Universidad</label>
+            </li>
+            <div class="spacer-name"></div>
+            <li>
+                <input
+                    class="text-field-input"
+                    type="text"
+                    id="university"
+                    name="university"
+                    autocomplete="off"
+                />
+            </li>
+        </ul>
+        <div class="submit-button">
+            <button type="submit" class="confirm-button">Confirmar</button>
+        </div>
+    </form>
+</div>

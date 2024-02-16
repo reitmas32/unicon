@@ -1,0 +1,16 @@
+#vision-content {
+    
+    margin: 20px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+@media (max-width: 1280px) {
+    #vision-content {
+        flex-direction: column;
+    }
+}

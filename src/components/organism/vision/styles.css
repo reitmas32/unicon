@@ -1,0 +1,26 @@
+.vision {
+    width: 70%;
+    /* Ancho deseado de la sección */
+    margin: 200px auto 0;
+    /* Margen automático en los lados, lo que centra la sección */
+    text-align: center;
+    position: relative;
+    /* Asegura que la posición de los elementos internos se ajuste correctamente */
+}
+
+#vision-spacer{
+    height: 10vh;
+}
+
+@media (max-width: 1280px) {
+    .vision {
+        width: 80%;
+    }
+}
+
+
+@media (max-width: 720px) {
+    .vision {
+        width: 100%;
+    }
+}

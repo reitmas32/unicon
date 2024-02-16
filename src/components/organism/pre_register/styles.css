@@ -1,0 +1,72 @@
+.preregistro {
+    width: 70%;
+    /* Ancho deseado de la sección */
+    margin: 200px auto 0;
+    /* Margen automático en los lados, lo que centra la sección */
+    text-align: start;
+    position: relative;
+    /* Asegura que la posición de los elementos internos se ajuste correctamente */
+}
+
+.names {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.text-field-custom {
+    flex: 1;
+    list-style-type: none;
+}
+
+.text-field-input {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    border-radius: 3px;
+    font-size: 20px;
+    padding: 10px;
+    width: 100%;
+    font-family: "JetBrains Mono";
+}
+
+.spacer-name {
+    height: 20px;
+}
+
+.input-label {
+    margin-bottom: 10px;
+}
+
+.submit-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    padding-top: 20px;
+}
+
+.confirm-button{
+    background-color: #cdb4c7;
+    font-size: 30px;
+}
+
+#vision-spacer {
+    height: 10vh;
+}
+
+@media (max-width: 1280px) {
+    .preregistro {
+        width: 80%;
+    }
+}
+
+
+@media (max-width: 720px) {
+    .preregistro {
+        width: 80%;
+    }
+
+    .names {
+        flex-direction: column;
+    }
+}
