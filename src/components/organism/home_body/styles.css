@@ -1,0 +1,38 @@
+.home-body {
+    height: 50%;
+    width: 70%;
+    /* Ancho deseado de la sección */
+    margin: 200px auto 0;
+    /* Margen automático en los lados, lo que centra la sección */
+    text-align: center;
+    position: relative;
+    /* Asegura que la posición de los elementos internos se ajuste correctamente */
+}
+
+#countdown{
+    font-size: 30px;
+}
+
+/* Para dispositivos móviles */
+@media (max-width: 768px) {
+    .home-body img {
+        width: 100%; /* La imagen ocupa todo el ancho de la sección en dispositivos móviles */
+    }
+
+    .home-body {
+        width: 90%;
+    }
+}
+
+/* Para otros dispositivos */
+@media (min-width: 769px) {
+    .home-body img {
+        width: 80%; /* La imagen ocupa el 80% del ancho de la sección en otros dispositivos */
+    }
+}
+
+@media (min-width: 1200px) {
+    .home-body {
+        width: 50%;
+    }
+}

@@ -1,0 +1,41 @@
+---
+import Layout from "../layouts/Layout.astro";
+import AuthButton from "../components/atoms/auth_button/AuthButton.astro";
+import ScrollNav from "../components/molecules/scroll_nav/ScrollNav.astro";
+import HomeBody from "../components/organism/home_body/HomeBody.astro";
+import Vision from "../components/organism/vision/Vision.astro";
+import PreRegistro from "../components/organism/pre_register/PreRegistro.astro";
+---
+
+<link
+	href="https://fonts.googleapis.com/css?family=JetBrains Mono"
+	rel="stylesheet"
+/>
+<Layout title="Unicon">
+	<ScrollNav />
+	<AuthButton label="PreRegister" />
+	<HomeBody />
+	<Vision />
+	<PreRegistro />
+	<div id="fotter"></div>
+</Layout>
+
+<style>
+	:root {
+		font-family: "JetBrains Mono";
+		color: white;
+		font-weight: 100;
+	}
+
+	:root::-webkit-scrollbar {
+		display: none;
+	}
+
+	html {
+		scroll-behavior: smooth;
+	}
+
+	#fotter {
+		height: 30vh;
+	}
+</style>
