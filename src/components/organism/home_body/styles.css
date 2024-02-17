@@ -1,22 +1,24 @@
 .home-body {
-    height: 50%;
-    width: 70%;
-    /* Ancho deseado de la sección */
-    margin: 200px auto 0;
-    /* Margen automático en los lados, lo que centra la sección */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     text-align: center;
-    position: relative;
+    /* Para centrar el texto horizontalmente */
+    flex-direction: column;
+
     /* Asegura que la posición de los elementos internos se ajuste correctamente */
 }
 
-#countdown{
+#countdown {
     font-size: 30px;
 }
 
 /* Para dispositivos móviles */
 @media (max-width: 768px) {
     .home-body img {
-        width: 100%; /* La imagen ocupa todo el ancho de la sección en dispositivos móviles */
+        width: 100%;
+        /* La imagen ocupa todo el ancho de la sección en dispositivos móviles */
     }
 
     .home-body {
@@ -27,12 +29,23 @@
 /* Para otros dispositivos */
 @media (min-width: 769px) {
     .home-body img {
-        width: 80%; /* La imagen ocupa el 80% del ancho de la sección en otros dispositivos */
+        width: 80%;
+        /* La imagen ocupa el 80% del ancho de la sección en otros dispositivos */
     }
 }
 
+.home-body img {
+    max-width: 100%;
+    /* Asegura que la imagen no se extienda más allá de su contenedor */
+    width: 100%;
+    /* Establece el ancho inicial al 100% */
+}
+
 @media (min-width: 1200px) {
-    .home-body {
-        width: 50%;
+    .home-body img {
+        width: 50vw;
+        /* Establece el ancho al 60% del ancho de la ventana si el ancho original es mayor a 1200px */
     }
+
+
 }

@@ -19,6 +19,7 @@
     .vision-item {
         width: 75%;
         flex-direction: column;
+
     }
 
 
@@ -31,6 +32,13 @@
 
     .vision-item-description {
         font-size: 12px;
+    }
+
+    .vision-item {
+        margin-right: 0px;
+        margin-left: 0px;
+        padding: 0px;
+        width: 90%;
     }
 
 }

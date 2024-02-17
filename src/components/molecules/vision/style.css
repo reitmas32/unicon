@@ -14,3 +14,10 @@
         flex-direction: column;
     }
 }
+
+@media (max-width: 720px) {
+    #vision-content {
+        margin: 0px;
+        
+    }
+}
