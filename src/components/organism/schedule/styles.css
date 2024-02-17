@@ -1,0 +1,44 @@
+.slider {
+    position: relative;
+    height: 370px;
+}
+
+
+.item {
+    position: absolute;
+
+    text-align: justify;
+    border-radius: 10px;
+    padding: 20px;
+    transition: 0.5s;
+    left: calc(50% - 110px);
+    top: 0;
+}
+
+.nav-buttons {
+    position: absolute;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    font-size: xxx-large;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+#next-at-the-ends, #prev-at-the-ends {
+    left: 10px;
+}
+
+#next-at-the-ends {
+    left: unset;
+    right: 50px;
+}
+
+#next-at-the-center, #prev-at-the-center {
+    position: relative;
+}
+
+.center-button {
+    padding-top: 320px;
+    text-align: center;
+}

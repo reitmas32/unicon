@@ -2,23 +2,36 @@
 import "./style.css";
 ---
 
-<script src="./script.js"></script>
+<script src="./script.ts"></script>
 <!-- Store the message prop as a data attribute. -->
 <section class="scroll-nav">
     <scrollbar-button data-id="1">
-        <a href="#home-body" role="button">
+        <a href="#home-body" role="button" class="scrollbar-button">
+            <p class="label-scrollbar-button">Home</p>
+            <div class="spacer-scrollbar-button"></div>
             <button class="scroll-nav-item" id="scroll-nav-item-1"></button>
         </a>
     </scrollbar-button>
 
     <scrollbar-button data-id="2">
-        <a href="#vision">
+        <a href="#vision" class="scrollbar-button">
+            <p class="label-scrollbar-button">Vision</p>
+            <div class="spacer-scrollbar-button"></div>
             <button class="scroll-nav-item" id="scroll-nav-item-2"></button>
         </a>
     </scrollbar-button>
     <scrollbar-button data-id="3">
-        <a href="#pre-registro">
+        <a href="#pre-registro" class="scrollbar-button">
+            <p class="label-scrollbar-button">Pre Registro</p>
+            <div class="spacer-scrollbar-button"></div>
             <button class="scroll-nav-item" id="scroll-nav-item-3"></button>
+        </a>
+    </scrollbar-button>
+    <scrollbar-button data-id="4">
+        <a href="#expositors" class="scrollbar-button">
+            <p class="label-scrollbar-button">Expositores</p>
+            <div class="spacer-scrollbar-button"></div>
+            <button class="scroll-nav-item" id="scroll-nav-item-4"></button>
         </a>
     </scrollbar-button>
 </section>

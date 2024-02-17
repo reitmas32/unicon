@@ -1,0 +1,34 @@
+---
+import { type ConferenceModel } from "../../../models/conference";
+import "./styles.css";
+
+interface Props {
+    conference: ConferenceModel;
+}
+
+const { conference } = Astro.props;
+---
+
+<script src="./script.ts"></script>
+<!-- Store the message prop as a data attribute. -->
+<article class="conference-card">
+    <div class="background-card">
+        <div class="purple-section"></div>
+        <div class="gray-section"></div>
+    </div>
+    <div class="img-speker">
+        <img
+            src="https://raw.githubusercontent.com/reitmas32/unicon/feat/ui-v2/assets/speakers/chica.png"
+            alt="Speaker"
+        />
+    </div>
+    <div class="card-info">
+        <h3 class="title-card">{conference.name_speaker}</h3>
+        <p class="description-card">{conference.description}</p>
+        <span class="card-info-spacer"></span>
+        <div class="tags">
+            {conference.tags.map((tag) => <p class="tag">{tag}</p>)}
+        </div>
+    </div>
+    
+</article>

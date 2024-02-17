@@ -1,0 +1,83 @@
+---
+import "./styles.css";
+
+import ConferenceCard from "../../molecules/conference_card/ConferenceCard.astro";
+
+import { type ConferenceModel } from "../../../models/conference";
+
+const conferences: ConferenceModel[] = [
+    {
+        start: "9:00 AM",
+        end: "10:00 AM",
+        title: "Introduction to TypeScript",
+        description:
+            "A comprehensive introduction to TypeScript programming language.",
+        name_speaker: "John Doe",
+        img_speaker: "john_doe.jpg",
+        tags: ["Software", "Flutter"],
+    },
+    {
+        start: "9:00 AM",
+        end: "10:00 AM",
+        title: "Introduction to TypeScript",
+        description:
+            "A comprehensive introduction to TypeScript programming language.",
+        name_speaker: "John Doe",
+        img_speaker: "john_doe.jpg",
+        tags: ["Software", "Flutter"],
+    },
+    {
+        start: "9:00 AM",
+        end: "10:00 AM",
+        title: "Introduction to TypeScript",
+        description:
+            "A comprehensive introduction to TypeScript programming language.",
+        name_speaker: "John Doe",
+        img_speaker: "john_doe.jpg",
+        tags: ["Software", "Flutter"],
+    },
+    {
+        start: "9:00 AM",
+        end: "10:00 AM",
+        title: "Introduction to TypeScript",
+        description:
+            "A comprehensive introduction to TypeScript programming language.",
+        name_speaker: "John Doe",
+        img_speaker: "john_doe.jpg",
+        tags: ["Software", "Flutter"],
+    },    {
+        start: "9:00 AM",
+        end: "10:00 AM",
+        title: "Introduction to TypeScript",
+        description:
+            "A comprehensive introduction to TypeScript programming language.",
+        name_speaker: "John Doe",
+        img_speaker: "john_doe.jpg",
+        tags: ["Software", "Flutter"],
+    },
+    {
+        start: "9:00 AM",
+        end: "10:00 AM",
+        title: "Introduction to TypeScript",
+        description:
+            "A comprehensive introduction to TypeScript programming language.",
+        name_speaker: "John Doe",
+        img_speaker: "john_doe.jpg",
+        tags: ["Software", "Flutter"],
+    },
+];
+---
+
+<script src="./script.js"></script>
+
+<div class="preregistro" id="expositors">
+    <h1>Expositores</h1>
+    <div class="slider">
+        {conferences.map((conference) => <div class="item"><ConferenceCard conference={conference}></ConferenceCard></div></p>)}
+        <div class="center-button">
+            <button class="nav-buttons" id="prev-at-the-center"><</button>
+            <button class="nav-buttons" id="next-at-the-center">></button>
+        </div>
+    </div>
+</div>
+

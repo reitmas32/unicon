@@ -41,3 +41,27 @@
 .scroll-nav-item:hover {
     transform: scale(1.5);
 }
+
+.scrollbar-button {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: end;
+
+    list-style-type: none;
+}
+
+.label-scrollbar-button {
+    color: white;
+    display: none;
+}
+
+.spacer-scrollbar-button{
+    width: 20px;
+}
+
+@media (max-width: 768px) {
+    .scroll-nav {
+        display: none;
+    }
+}
