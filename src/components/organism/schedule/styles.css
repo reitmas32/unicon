@@ -42,3 +42,10 @@
     padding-top: 320px;
     text-align: center;
 }
+
+
+@media (max-width: 1200px) {
+    .slider {
+        overflow: hidden;
+    }
+}
