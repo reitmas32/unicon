@@ -5,7 +5,6 @@ class ScrollBarButton extends HTMLElement {
 
         // Read the message from the data attribute.
         const id = this.dataset.id;
-        console.log(id);
 
         const button = this.querySelector("button");
         const label = this.querySelector("p");
