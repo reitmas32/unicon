@@ -1,20 +1,23 @@
-let items = document.querySelectorAll('.slider .item');
+let items_expositors = document.querySelectorAll('.slider-expositors .item-expositor');
+let items_schedule = document.querySelectorAll('.slider-schedule .item-schedule');
 
-let next_center = document.getElementById('next-at-the-center');
-let prev_center = document.getElementById('prev-at-the-center');
+let next_expositors = document.getElementById('next-expositors');
+let prev_expositors = document.getElementById('prev-expositors');
+
+let next_schedule = document.getElementById('next-schedule');
+let prev_schedule = document.getElementById('prev-schedule');
 
 var screenWidth = window.innerWidth;
 
-console.log(screenWidth)
-
-let active = 0;
-function loadShow() {
+let active_expositor = 0;
+let active_schedule = 0;
+function loadShow(items, active_item) {
     let stt = 0;
-    items[active].style.transform = `translateX(-200px)`;
-    items[active].style.zIndex = 1;
-    items[active].style.filter = 'none';
-    items[active].style.opacity = 1;
-    for (var i = active + 1; i < items.length; i++) {
+    items[active_item].style.transform = `translateX(-200px)`;
+    items[active_item].style.zIndex = 1;
+    items[active_item].style.filter = 'none';
+    items[active_item].style.opacity = 1;
+    for (var i = active_item + 1; i < items.length; i++) {
         stt++;
         if (screenWidth > 1200) {
 
@@ -28,7 +31,7 @@ function loadShow() {
         items[i].style.opacity = stt > 2 ? 0 : 0.6;
     }
     stt = 0;
-    for (var i = active - 1; i >= 0; i--) {
+    for (var i = active_item - 1; i >= 0; i--) {
         stt++;
         if (screenWidth > 1200) {
 
@@ -42,14 +45,48 @@ function loadShow() {
         items[i].style.opacity = stt > 2 ? 0 : 0.6;
     }
 }
-loadShow();
+loadShow(items_expositors, active_expositor);
 
 
-next_center.onclick = function () {
-    active = active + 1 < items.length ? active + 1 : active;
-    loadShow();
+next_expositors.onclick = function () {
+    active_expositor = active_expositor + 1 < items_expositors.length ? active_expositor + 1 : active_expositor;
+    loadShow(items_expositors, active_expositor);
 }
-prev_center.onclick = function () {
-    active = active - 1 >= 0 ? active - 1 : active;
-    loadShow();
+prev_expositors.onclick = function () {
+    active_expositor = active_expositor - 1 >= 0 ? active_expositor - 1 : active_expositor;
+    loadShow(items_expositors, active_expositor);
 }
+
+
+loadShow(items_schedule, active_schedule);
+
+
+next_schedule.onclick = function () {
+    active_schedule = active_schedule + 1 < items_schedule.length ? active_schedule + 1 : active_schedule;
+    loadShow(items_schedule, active_schedule);
+}
+
+prev_schedule.onclick = function () {
+    active_schedule = active_schedule - 1 >= 0 ? active_schedule - 1 : active_schedule;
+    loadShow(items_schedule, active_schedule);
+}
+
+function changeExpositors() {
+    if(active_expositor + 1 == items_expositors.length){
+        active_expositor = -1;
+    }
+    active_expositor = active_expositor + 1 < items_expositors.length ? active_expositor + 1 : active_expositor;
+    loadShow(items_expositors, active_expositor);
+}
+
+setInterval(changeExpositors, 7000);
+
+function changeSchedule() {
+    if(active_schedule + 1 == items_schedule.length){
+        active_schedule = -1;
+    }
+    active_schedule = active_schedule + 1 < items_schedule.length ? active_schedule + 1 : active_schedule;
+    loadShow(items_schedule, active_schedule);
+}
+
+setInterval(changeSchedule, 5000);

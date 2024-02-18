@@ -1,12 +1,12 @@
-.slider {
+.slider-expositors, .slider-schedule{
     position: relative;
     height: 370px;
 }
 
 
-.item {
+.item-expositor, .item-schedule {
     position: absolute;
-
+    
     text-align: justify;
     border-radius: 10px;
     padding: 20px;
@@ -25,16 +25,7 @@
     font-weight: bold;
 }
 
-#next-at-the-ends, #prev-at-the-ends {
-    left: 10px;
-}
-
-#next-at-the-ends {
-    left: unset;
-    right: 50px;
-}
-
-#next-at-the-center, #prev-at-the-center {
+#next-expositors, #prev-expositors, #next-schedule, #prev-schedule {
     position: relative;
 }
 
@@ -45,7 +36,7 @@
 
 
 @media (max-width: 1200px) {
-    .slider {
+    .slider-expositors, .slider-schedule{
         overflow: hidden;
     }
 }
