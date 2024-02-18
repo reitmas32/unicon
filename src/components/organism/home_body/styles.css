@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 80vh;
     text-align: center;
     /* Para centrar el texto horizontalmente */
     flex-direction: column;
@@ -11,7 +11,7 @@
 }
 
 #countdown {
-    font-size: 30px;
+    font-size: 3em;
 }
 
 /* Para dispositivos móviles */
@@ -23,6 +23,11 @@
 
     .home-body {
         width: 90%;
+        height: 100vh;
+    }
+
+    #countdown {
+        font-size: 1.5em;
     }
 }
 
