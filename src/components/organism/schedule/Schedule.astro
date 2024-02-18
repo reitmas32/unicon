@@ -1,6 +1,8 @@
 ---
 import "./styles.css";
 
+import ExpositorCard from "../../molecules/expositor_card/ExpositorCard.astro";
+
 import ConferenceCard from "../../molecules/conference_card/ConferenceCard.astro";
 
 import { type ConferenceModel } from "../../../models/conference";
@@ -72,11 +74,19 @@ const conferences: ConferenceModel[] = [
 
 <div class="preregistro" id="expositors">
     <h1>Expositores</h1>
-    <div class="slider">
-        {conferences.map((conference) => <div class="item"><ConferenceCard conference={conference}></ConferenceCard></div></p>)}
+    <div class="slider-expositors">
+        {conferences.map((conference) => <div class="item-expositor"><ExpositorCard conference={conference}></ExpositorCard></div></p>)}
         <div class="center-button">
-            <button class="nav-buttons" id="prev-at-the-center">&lt;</button>
-            <button class="nav-buttons" id="next-at-the-center">></button>
+            <button class="nav-buttons" id="prev-expositors">&lt;</button>
+            <button class="nav-buttons" id="next-expositors">></button>
+        </div>
+    </div>
+    <h1>Agenda</h1>
+    <div class="slider-schedule">
+        {conferences.map((conference) => <div class="item-schedule"><ConferenceCard conference={conference}></ConferenceCard></div></p>)}
+        <div class="center-button">
+            <button class="nav-buttons" id="prev-schedule">&lt;</button>
+            <button class="nav-buttons" id="next-schedule">></button>
         </div>
     </div>
 </div>

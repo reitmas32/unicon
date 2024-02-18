@@ -65,7 +65,28 @@ next_schedule.onclick = function () {
     active_schedule = active_schedule + 1 < items_schedule.length ? active_schedule + 1 : active_schedule;
     loadShow(items_schedule, active_schedule);
 }
+
 prev_schedule.onclick = function () {
     active_schedule = active_schedule - 1 >= 0 ? active_schedule - 1 : active_schedule;
     loadShow(items_schedule, active_schedule);
 }
+
+function changeExpositors() {
+    if(active_expositor + 1 == items_expositors.length){
+        active_expositor = -1;
+    }
+    active_expositor = active_expositor + 1 < items_expositors.length ? active_expositor + 1 : active_expositor;
+    loadShow(items_expositors, active_expositor);
+}
+
+setInterval(changeExpositors, 7000);
+
+function changeSchedule() {
+    if(active_schedule + 1 == items_schedule.length){
+        active_schedule = -1;
+    }
+    active_schedule = active_schedule + 1 < items_schedule.length ? active_schedule + 1 : active_schedule;
+    loadShow(items_schedule, active_schedule);
+}
+
+setInterval(changeSchedule, 5000);
