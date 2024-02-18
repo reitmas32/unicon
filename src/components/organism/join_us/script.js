@@ -12,7 +12,7 @@ for (var i = 0; i < people.length; i++) {
 function estaPosicionLibre(posicion, arrayPosiciones, variacion) {
     // Convertir la posición de cadena a números
     const [x, y] = posicion.split(',').map(Number);
-  
+
     // Verificar si la posición está cerca de alguna posición en el array
     for (const pos of arrayPosiciones) {
         const [posX, posY] = pos.split(',').map(Number);
@@ -20,7 +20,7 @@ function estaPosicionLibre(posicion, arrayPosiciones, variacion) {
             return false; // La posición está cerca de una posición del array
         }
     }
-  
+
     return true; // La posición no está cerca de ninguna posición del array
 }
 
@@ -35,7 +35,6 @@ async function randomPos(img) {
     await new Promise(resolve => setTimeout(resolve, 2000));
     const index = occupiedPositions.indexOf(imgPosition);
     if (index !== -1) {
-        console.log("en tro")
         occupiedPositions.splice(index, 1);
     }
 
@@ -77,7 +76,6 @@ async function randomPos(img) {
     const randomIndex = Math.floor(Math.random() * availablePositions.length);
     let [randomX_str, randomY_str] = availablePositions[randomIndex].split(",");
 
-    console.log(occupiedPositions);
 
     // Almacenar la posición ocupada
 
@@ -107,7 +105,7 @@ function randomWithVariation(baseNumber, variation) {
     // Calculate the minimum and maximum range
     const min = baseNumber - variation;
     const max = baseNumber + variation;
-    
+
     // Generate a random number within the specified range
     return Math.floor(Math.random() * (max - min) + min);
 }
@@ -115,9 +113,9 @@ function randomWithVariation(baseNumber, variation) {
 function nextImg() {
     let item = people[cursor];
 
-    
 
-    if(cursor + 1 == people.length ){
+
+    if (cursor + 1 == people.length) {
         cursor = 0;
     }
 
@@ -125,7 +123,6 @@ function nextImg() {
 
     randomPos(item);
 
-    console.log(occupiedPositions.length);
 }
 
 setInterval(nextImg, 2000);
