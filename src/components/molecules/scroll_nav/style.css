@@ -36,6 +36,7 @@
 
     background-color: #5c5c5c;
     transition: transform 0.3s;
+    transform: scale(0.7);
 }
 
 .scroll-nav-item:hover {
@@ -49,6 +50,7 @@
     justify-content: end;
 
     list-style-type: none;
+    text-decoration: none;
 }
 
 .label-scrollbar-button {
@@ -56,7 +58,7 @@
     display: none;
 }
 
-.spacer-scrollbar-button{
+.spacer-scrollbar-button {
     width: 20px;
 }
 

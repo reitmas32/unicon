@@ -5,7 +5,8 @@ import ScrollNav from "../components/molecules/scroll_nav/ScrollNav.astro";
 import HomeBody from "../components/organism/home_body/HomeBody.astro";
 import Vision from "../components/organism/vision/Vision.astro";
 import PreRegistro from "../components/organism/pre_register/PreRegistro.astro";
-import Schedule from "../components/organism/schedule/Schedule.astro"
+import Schedule from "../components/organism/schedule/Schedule.astro";
+import JoinUs from "../components/organism/join_us/Join_us.astro";
 ---
 
 <link
@@ -19,6 +20,7 @@ import Schedule from "../components/organism/schedule/Schedule.astro"
 	<Vision />
 	<PreRegistro />
 	<Schedule />
+	<JoinUs />
 	<div id="fotter"></div>
 </Layout>
 
@@ -36,8 +38,7 @@ import Schedule from "../components/organism/schedule/Schedule.astro"
 	html {
 		scroll-behavior: smooth;
 	}
-
 	#fotter {
-		height: 30vh;
+		height: 400px;
 	}
 </style>

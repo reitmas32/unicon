@@ -13,12 +13,24 @@ const { title } = Astro.props;
 		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-F5mDE5e6tGK7itOzPz7ZMyTsrBROINfNKSTvsRsdJwXClJh8VzFVv5ByxigDzqG+" crossorigin="anonymous">
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+			integrity="sha384-F5mDE5e6tGK7itOzPz7ZMyTsrBROINfNKSTvsRsdJwXClJh8VzFVv5ByxigDzqG+"
+			crossorigin="anonymous"
+		/>
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
 	<body>
-		<slot />
+		<video autoplay muted loop id="video-bg">
+			<source src="/output.mp4" type="video/mp4" />
+			Tu navegador no soporta videos HTML5.
+		</video>
+
+		<div class="background-opacity">
+			<slot />
+		</div>
 	</body>
 </html>
 <style is:global>
@@ -31,6 +43,7 @@ const { title } = Astro.props;
 	}
 
 	body {
+		/* background-image: url("/background.gif"); */
 		background-image: url("/background.gif");
 		/* Reemplaza 'ruta/de/la/imagen.jpg' con la ruta de tu imagen */
 		background-repeat: repeat;
@@ -38,5 +51,27 @@ const { title } = Astro.props;
 		background-attachment: fixed;
 
 		color: white;
+	}
+</style>
+
+<style>
+	.background-opacity {
+		position: absolute;
+		background-color: rgba(0, 0, 0, 0.7);
+		left: 0px;
+		top: 0px;
+		right: 0px;
+	}
+
+	#video-bg {
+		position: fixed;
+		left: 0;
+		top: 0;
+		min-width: 100%;
+		min-height: 100%;
+		width: auto;
+		height: auto;
+		z-index: -100;
+		background-size: cover;
 	}
 </style>

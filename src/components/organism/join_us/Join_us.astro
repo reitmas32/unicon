@@ -1,0 +1,103 @@
+---
+import "./styles.css";
+
+import { type PeopleModel } from "../../../models/people.ts";
+
+const people: PeopleModel[] = [
+    {
+        img: "/people/p1.jpeg",
+        pos_x: 23,
+        pos_y: 22,
+    },
+    {
+        img: "/people/p2.jpeg",
+        pos_x: 100,
+        pos_y: 22,
+    },
+    {
+        img: "/people/p3.jpeg",
+        pos_x: 200,
+        pos_y: 22,
+    },
+    {
+        img: "/people/p4.jpeg",
+        pos_x: 300,
+        pos_y: 22,
+    },
+    {
+        img: "/people/p5.jpeg",
+        pos_x: 23,
+        pos_y: 22,
+    },
+    {
+        img: "/people/p2.jpeg",
+        pos_x: 100,
+        pos_y: 22,
+    },
+    {
+        img: "/people/p3.jpeg",
+        pos_x: 200,
+        pos_y: 22,
+    },
+    {
+        img: "/people/p1.jpeg",
+        pos_x: 23,
+        pos_y: 22,
+    },
+    {
+        img: "/people/p2.jpeg",
+        pos_x: 100,
+        pos_y: 22,
+    },
+    {
+        img: "/people/p3.jpeg",
+        pos_x: 200,
+        pos_y: 22,
+    },
+    {
+        img: "/people/p1.jpeg",
+        pos_x: 23,
+        pos_y: 22,
+    },
+    {
+        img: "/people/p2.jpeg",
+        pos_x: 100,
+        pos_y: 22,
+    },
+];
+
+const participants_num = 250;
+const speakers_num = 10;
+const areas_num = 14;
+---
+
+<script src="./script.js"></script>
+
+<div class="join-us" id="join-us">
+    <div class="images-layer">
+        {people.map((p) => <img src={p.img} alt="hola" class="people-image" />)}
+    </div>
+
+    <div class="join-us-content">
+        <h2 class="title">
+            Únase al movimiento: ¡sea parte de nuestro innovador congreso
+            tecnológico!
+        </h2>
+        <p>¿Por qué debería asistir?</p>
+
+        <div class="statistics">
+            <div>
+                <p class="statistics-value">{participants_num}</p>
+                <p class="statistics-label">Asistentes</p>
+            </div>
+            <div>
+                <p class="statistics-value">{speakers_num}</p>
+                <p class="statistics-label">Ponentes</p>
+            </div>
+            <div>
+                <p class="statistics-value">{areas_num}</p>
+                <p class="statistics-label">Areas</p>
+            </div>
+        </div>
+    </div>
+</div>
