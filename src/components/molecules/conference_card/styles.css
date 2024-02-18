@@ -20,3 +20,28 @@
 .description-conference {
     font-size: 1em;
 }
+
+@media (max-width: 1200px) {
+
+    .conference-card {
+        transform: scale(0.8);
+    }
+
+}
+
+@media (max-width: 720px) {
+
+    .conference-card {
+        transform: translate(100px);
+        transform: scale(0.7);
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .conference-card {
+        transform: scale(0.4);
+    }
+
+}

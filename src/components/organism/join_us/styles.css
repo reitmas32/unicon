@@ -1,0 +1,56 @@
+.join-us-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    text-align: center;
+    height: 100vh;
+    padding-top: 100px;
+}
+
+.title {
+    font-size: 1.8em;
+    max-width: 60%;
+    /* Ancho máximo de 500px */
+    margin: 0 auto;
+    /* Centra horizontalmente */
+    z-index: 02;
+}
+
+.statistics {
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    height: 50%;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-evenly;
+    z-index: 2;
+}
+
+.statistics-value {
+    font-size: 2.3em;
+    font-weight: 700;
+}
+
+.statistics-label {
+    font-size: 1.2em;
+}
+
+.images-layer {
+    position: relative;
+    z-index: 1;
+}
+
+.people-image {
+    position: absolute;
+    width: 180px;
+    /* Ancho deseado */
+    height: 180px;
+    /* Alto deseado */
+    object-fit: cover;
+
+    filter: brightness(0.3);
+    border-radius: 15px;
+    transition: opacity 1s ease;
+    /* Bordes redondos */
+}

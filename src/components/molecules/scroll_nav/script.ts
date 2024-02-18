@@ -11,25 +11,47 @@ class ScrollBarButton extends HTMLElement {
 
         var labels = document.getElementsByClassName("label-scrollbar-button");
 
+        var elements = document.getElementsByClassName("scroll-nav-item") as HTMLCollectionOf<HTMLElement>;
+        elements[0].style.backgroundColor = "white";
+        elements[0].style.transform = "scale(1.0)"
+
+        button?.addEventListener("mouseover", () => {
+
+            if (label) {
+                label.style.display = "block";
+                button.style.transform = "scale(1.2)"
+            }
+        });
+
+        button?.addEventListener("mouseout", () => {
+
+            if (label) {
+                label.style.display = "none";
+                if (button.style.backgroundColor == "white") {
+                    button.style.transform = "scale(1.1)"
+
+                } else {
+
+                    button.style.transform = "scale(0.7)"
+                }
+            }
+        });
+
         if (button) {
             button.addEventListener("click", () => {
                 var elements = document.getElementsByClassName("scroll-nav-item") as HTMLCollectionOf<HTMLElement>;
-                var labels = document.getElementsByClassName("label-scrollbar-button") as HTMLCollectionOf<HTMLElement>;
 
 
                 for (var i = 0; i < elements.length; i++) {
                     elements[i].style.backgroundColor = "#5c5c5c";
-                }
-                for (var i = 0; i < labels.length; i++) {
-                    labels[i].style.display = "none";
+                    elements[i].style.transform = "scale(0.7)"
                 }
 
-                if (label) {
 
-                    label.style.display = "block";
-                }
+
 
                 button.style.backgroundColor = "white"
+                button.style.transform = "scale(1.2)"
             });
         }
     }

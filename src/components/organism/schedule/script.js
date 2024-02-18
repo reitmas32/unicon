@@ -11,9 +11,9 @@ var screenWidth = window.innerWidth;
 
 let active_expositor = 0;
 let active_schedule = 0;
-function loadShow(items, active_item) {
+function loadShow(items, active_item, translateX=0) {
     let stt = 0;
-    items[active_item].style.transform = `translateX(-200px)`;
+    items[active_item].style.transform = `translateX(${translateX}px)`;
     items[active_item].style.zIndex = 1;
     items[active_item].style.filter = 'none';
     items[active_item].style.opacity = 1;
@@ -45,30 +45,30 @@ function loadShow(items, active_item) {
         items[i].style.opacity = stt > 2 ? 0 : 0.6;
     }
 }
-loadShow(items_expositors, active_expositor);
+loadShow(items_expositors, active_expositor, -200);
 
 
 next_expositors.onclick = function () {
     active_expositor = active_expositor + 1 < items_expositors.length ? active_expositor + 1 : active_expositor;
-    loadShow(items_expositors, active_expositor);
+    loadShow(items_expositors, active_expositor, -200);
 }
 prev_expositors.onclick = function () {
     active_expositor = active_expositor - 1 >= 0 ? active_expositor - 1 : active_expositor;
-    loadShow(items_expositors, active_expositor);
+    loadShow(items_expositors, active_expositor, -200);
 }
 
 
-loadShow(items_schedule, active_schedule);
+loadShow(items_schedule, active_schedule, -100);
 
 
 next_schedule.onclick = function () {
     active_schedule = active_schedule + 1 < items_schedule.length ? active_schedule + 1 : active_schedule;
-    loadShow(items_schedule, active_schedule);
+    loadShow(items_schedule, active_schedule, -100);
 }
 
 prev_schedule.onclick = function () {
     active_schedule = active_schedule - 1 >= 0 ? active_schedule - 1 : active_schedule;
-    loadShow(items_schedule, active_schedule);
+    loadShow(items_schedule, active_schedule, -100);
 }
 
 function changeExpositors() {
@@ -76,7 +76,7 @@ function changeExpositors() {
         active_expositor = -1;
     }
     active_expositor = active_expositor + 1 < items_expositors.length ? active_expositor + 1 : active_expositor;
-    loadShow(items_expositors, active_expositor);
+    loadShow(items_expositors, active_expositor, -200);
 }
 
 setInterval(changeExpositors, 7000);
@@ -86,7 +86,7 @@ function changeSchedule() {
         active_schedule = -1;
     }
     active_schedule = active_schedule + 1 < items_schedule.length ? active_schedule + 1 : active_schedule;
-    loadShow(items_schedule, active_schedule);
+    loadShow(items_schedule, active_schedule, -100);
 }
 
 setInterval(changeSchedule, 5000);
