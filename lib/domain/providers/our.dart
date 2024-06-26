@@ -8,19 +8,19 @@ class OurContainer extends StateNotifier<List<OurModel>> {
       : super(
           <OurModel>[
             OurModel(
-              title: 'Our Vision',
+              title: 'Nuestra Visión',
               description: '''
-We envision a global community where tech enthusiasts and change-makers unite. Our goal is to spark inspiration, encourage boundless innovation, and nurture dreams in the ever-evolving world of computing.''',
+Imaginamos una comunidad global donde se unen los entusiastas de la tecnología y los agentes de cambio. Nuestro objetivo es generar inspiración, fomentar la innovación ilimitada y fomentar los sueños en el mundo de la informática en constante evolución.''',
             ),
             OurModel(
-              title: 'Our Values',
+              title: 'Nuestros Valores',
               description: '''
-Our congress thrives on a passion for technology, embracing collaboration and networking. We champion diversity and creativity, fostering an environment where every idea propels growth and innovation in computing.''',
+Nuestro congreso se nutre de la pasión por la tecnología, abrazando la colaboración y el networking. Defendemos la diversidad y la creatividad, fomentando un entorno donde cada idea impulsa el crecimiento y la innovación en la informática.''',
             ),
             OurModel(
-              title: 'Our Goals',
+              title: 'Nuestros Objetivos',
               description: '''
-Our aim is to empower individuals in the tech realm, fostering a collaborative community that nurtures innovation. We strive to inspire creativity, challenge the status quo, and expand the horizons of what's possible in computing.''',
+Nuestro objetivo es empoderar a las personas en el ámbito tecnológico, fomentando una comunidad colaborativa que fomente la innovación. Nos esforzamos por inspirar la creatividad, desafiar el status quo y ampliar los horizontes de lo que es posible en informática.''',
             ),
           ],
         );

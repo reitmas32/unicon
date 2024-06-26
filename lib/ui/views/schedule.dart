@@ -25,7 +25,7 @@ class Schedule extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SpeakersCarrusel(),
+               SpeakersCarrusel(),
             ],
           ),
         ),

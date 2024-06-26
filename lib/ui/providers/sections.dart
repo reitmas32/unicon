@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:unicon/domain/models/section_model.dart';
+import 'package:unicon/ui/packages/section_scroll.dart';
 import 'package:unicon/ui/views/home_body.dart';
 import 'package:unicon/ui/views/pre_register.dart';
+import 'package:unicon/ui/views/schedule.dart';
 import 'package:unicon/ui/views/vision.dart';
 
 ///
@@ -12,20 +13,20 @@ class SectionCollection extends StateNotifier<List<SectionModel<Widget>>> {
       : super(
           <SectionModel<Widget>>[
             SectionModel<HomeBody>(
-              name: 'Home',
+              name: 'Home  ',
               content: const HomeBody(),
               active: true,
             ),
             SectionModel<VisionSection>(
-              name: 'Vision',
+              name: 'Vision  ',
               content: const VisionSection(),
             ),
-            //SectionModel<Schedule>(
-            //  name: "Exibitor",
-            //  content: const Schedule(),
-            //),
+            SectionModel<Schedule>(
+              name: 'Exibitor',
+              content: const Schedule(),
+            ),
             SectionModel<PreRegisterView>(
-              name: 'Join Us',
+              name: 'Join Us ',
               content: const PreRegisterView(),
             ),
           ],

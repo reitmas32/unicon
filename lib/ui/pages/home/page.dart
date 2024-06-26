@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:section_scroll/section_scroll.dart';
-import 'package:unicon/domain/models/section_model.dart';
 import 'package:unicon/ui/organism/background.dart';
 import 'package:unicon/ui/organism/pre_register_layer.dart';
+import 'package:unicon/ui/packages/section_scroll.dart';
 import 'package:unicon/ui/providers/section_reader.dart';
 import 'package:unicon/ui/providers/sections.dart';
 
@@ -37,11 +36,16 @@ class _HomePageState extends ConsumerState<HomePage> {
                 Expanded(
                   child: SectionScroll(
                     controller: scrollController,
-                    children: <Widget>[
-                      ...sections
-                          .map((SectionModel<Widget> e) => e.content)
-                          .toList(),
-                    ],
+                    showLabels: true,
+                    activeTab: const CircleContainer(
+                      radius: 20,
+                      color: Colors.white,
+                    ),
+                    deactiveTab: const CircleContainer(
+                      radius: 20,
+                      color: Colors.grey,
+                    ),
+                    children: sections,
                   ),
                 ),
               ],
@@ -51,5 +55,10 @@ class _HomePageState extends ConsumerState<HomePage> {
         ),
       ),
     );
+  }
+
+  int getIndex(double scrollPosition) {
+    return (scrollPosition + MediaQuery.of(context).size.height * 0.25) ~/
+        MediaQuery.of(context).size.height;
   }
 }

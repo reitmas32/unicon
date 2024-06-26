@@ -18,7 +18,7 @@ class BackGroundWidget extends StatelessWidget {
         Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/background.gif'),
+              image: AssetImage('assets/background.png'),
               fit: BoxFit.cover, // Para cubrir toda la pantalla
             ),
           ),

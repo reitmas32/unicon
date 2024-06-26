@@ -122,7 +122,7 @@ class _AreaWidgetState extends State<AreaWidget> {
               style: GoogleFonts.jetBrainsMono(
                 fontSize: isHover ? 25 : 20,
                 fontWeight: isHover ? FontWeight.bold : FontWeight.normal,
-                color: isHover ? Colors.white : Colors.grey,
+                color: isHover ? Colors.white : Color.fromARGB(255, 228, 225, 225),
               ),
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),

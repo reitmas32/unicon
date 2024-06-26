@@ -32,7 +32,7 @@ class _HomeBodyState extends ConsumerState<HomeBody> {
     final double descriptionfontSizeCountDown =
         MediaQuery.of(context).size.aspectRatio > 0.7 ? 25 : 12;
 
-    final DateTime remainingTime = DateTime(2024, 4, 20);
+    final DateTime remainingTime = DateTime(2025, 1, 25);
 
     return SizedBox(
       height: size.height * 0.87,
@@ -50,7 +50,7 @@ class _HomeBodyState extends ConsumerState<HomeBody> {
                 width: widthContent - 50,
                 child: SelectableText(
                   '''
-Networking with Passion: Collaborate with Tech Enthusiasts and Innovators''',
+Establecer contactos con pasión: colaborar con innovadores y entusiastas de la tecnología''',
                   style: GoogleFonts.jetBrainsMono(fontSize: fontSize),
                   textAlign: TextAlign.center,
                 ),

@@ -6,25 +6,21 @@ environment:
   sdk: '>=3.2.2 <4.0.0'
 dependencies: 
   cupertino_icons: ^1.0.2
-  easy_debounce: ^2.0.3
-  eva_icons_flutter: ^3.1.0
-  flutter_carousel_widget: ^2.2.0
   flutter_riverpod: ^2.4.9
-  flutter_svg: ^2.0.9
-  flutter_timer_countdown: ^1.0.7
   go_router: ^12.1.3
-  google_fonts: ^6.1.0
-  http: ^1.2.0
-  markdown_widget: ^2.3.2+3
-  scrollable_positioned_list: ^0.3.8
+  markdown_widget: ^2.3.2+6
   url_strategy: ^0.2.0
-  
-  flutter: 
-    sdk: flutter
+  google_fonts: ^6.2.1
+  flutter_timer_countdown: ^1.0.7
+  flutter_svg: ^2.0.10+1
+  flutter_carousel_widget: ^2.2.0
   section_scroll: 
     git: 
       url: https://github.com/reitmas32/section_scroll.git
       ref: main
+
+  flutter: 
+    sdk: flutter
 dev_dependencies: 
   flutter_lints: ^2.0.0
   lint: ^1.3.0
